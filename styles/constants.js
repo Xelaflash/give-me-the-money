@@ -8,14 +8,14 @@ export const COLORS = {
     900: 'hsl(220deg, 3%, 20%)',
   },
   // Dollar green
-  primary: 'hsl(98, 39%, 56%)',
+  primary: '#26785f',
   // blue
-  secondary: 'hsl(214, 80%, 24%)',
+  secondary: '#001220',
   // secondary: 'hsl(223, 74%, 7%)',
   // vivid green
   vividGreen: 'hsl(151, 73%, 55%)',
   // light green
-  lightGreen: 'hsl(154, 60%, 50%)',
+  lightGreen: '#33cc8a',
   // very pale green
   veryPaleGreen: 'hsl(91, 56%, 92%)',
 };

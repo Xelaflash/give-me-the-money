@@ -56,9 +56,6 @@ table {
   font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: auto;
-  color: ${COLORS.white};
-  background-color: ${COLORS.secondary};
-  font-weight: ${WEIGHTS.normal};
 }
 
 #root {
@@ -68,10 +65,17 @@ table {
     float above the app.
   */
   isolation: isolate;
+
 }
 
 html, body, #root {
   height: 100%;
+}
+
+body {
+  color: ${COLORS.white};
+  font-weight: ${WEIGHTS.normal};
+
 }
 `;
 
