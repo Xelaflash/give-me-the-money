@@ -65,7 +65,6 @@ table {
     float above the app.
   */
   isolation: isolate;
-
 }
 
 html, body, #root {
