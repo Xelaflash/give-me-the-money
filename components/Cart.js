@@ -8,6 +8,10 @@ import { useCart } from '../utils/cartState';
 
 // import { Checkout } from "./Checkout";
 
+// const redirectToCheckout = async () => {
+//   ...
+// };
+
 export default function Cart() {
   const { cartOpen, closeCart } = useCart();
 

@@ -5,11 +5,12 @@ import Image from 'next/image';
 // styles imports
 import styled from 'styled-components';
 // import { loadStripe } from '@stripe/stripe-js';
+import Stripe from 'stripe';
 import { COLORS, WEIGHTS } from '../styles/constants';
 import Layout from '../components/Layout';
 import Cart from '../components/Cart';
 
-export default function Home() {
+export default function Home({ productPriceData }) {
   return (
     <Layout>
       <>
@@ -41,6 +42,14 @@ export default function Home() {
               />
             </a>
           </PaymentWrapper>
+          <div>
+            Stripe product:
+            <ul>
+              <li>
+                <a href="https://buy.stripe.com/test_bIY00uacadbi2g8eUU">test produit 1</a>
+              </li>
+            </ul>
+          </div>
         </main>
       </>
     </Layout>
