@@ -21,7 +21,6 @@ export default function Nav() {
 }
 
 const NavWrapper = styled.nav`
-  border: 1px solid red;
   height: 72px;
   display: flex;
   justify-content: flex-end;
@@ -30,5 +29,6 @@ const NavWrapper = styled.nav`
   button {
     background: transparent;
     border: none;
+    padding-right: 25px;
   }
 `;
