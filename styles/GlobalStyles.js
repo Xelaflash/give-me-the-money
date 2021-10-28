@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { COLORS, WEIGHTS } from './constants';
 
 const GlobalStyles = createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -55,6 +56,9 @@ table {
   font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: auto;
+  color: ${COLORS.white};
+  background-color: ${COLORS.secondary};
+  font-weight: ${WEIGHTS.normal};
 }
 
 #root {
