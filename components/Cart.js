@@ -23,6 +23,9 @@ export default function Cart() {
           &times;
         </CloseButton>
       </header>
+      <form action="/create-checkout-session" method="POST">
+        <button type="submit">Checkout</button>
+      </form>
     </CartStyles>
   );
 }
