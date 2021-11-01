@@ -31,7 +31,7 @@ const Supreme = styled.h3`
   background: ${COLORS.primary};
   color: ${COLORS.white};
   display: inline-block;
-  padding: 4px 5px;
+  padding: 8px;
   transform: skew(-3deg);
   margin: 0;
   font-size: 2rem;

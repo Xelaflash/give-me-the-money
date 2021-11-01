@@ -9,8 +9,15 @@ import Stripe from 'stripe';
 import { COLORS, WEIGHTS } from '../styles/constants';
 import Layout from '../components/Layout';
 import Cart from '../components/Cart';
+import Hero from '../components/Hero';
 
-export default function Home({ productPriceData }) {
+export default function Home() {
+  async function fetchProducts() {
+    const response = await fetch('https://api.stripe.com/v1/products');
+    // waits until the request completes...
+    console.log(response);
+  }
+
   return (
     <Layout>
       <>
@@ -21,28 +28,10 @@ export default function Home({ productPriceData }) {
         </Head>
         <main>
           <Cart />
-          <HeroWrapper>
-            <h1>
-              Give me the <span>Money</span>
-            </h1>
-            <h2>
-              You want to donate? I <span>collect?</span>
-            </h2>
-          </HeroWrapper>
-          <PaymentWrapper>
-            <a href="https://www.buymeacoffee.com/givemethe.money" target="_blank" rel="noreferrer">
-              <Image
-                src="/images/bmc-button.png"
-                alt="Buy me a coffee button"
-                quality={75}
-                width={200}
-                height={56}
-                placeholder="blur"
-                blurDataURL
-              />
-            </a>
-          </PaymentWrapper>
+          <Hero />
+          <PaymentWrapper />
           <div>
+            {/* Direct Checkout link => no Cart */}
             Stripe product:
             <ul>
               <li>
@@ -56,31 +45,34 @@ export default function Home({ productPriceData }) {
   );
 }
 
-const HeroWrapper = styled.section`
-  width: max-content;
-  margin: auto;
-  text-align: center;
+// export async function getServerSideProps() {
+//   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-  h1 {
-    padding-top: 50px;
-    font-size: 3.5rem;
-    font-weight: ${WEIGHTS.bold};
-    margin: 0;
-  }
+//   const productPriceData = await stripe.prices.list({
+//     expand: ['data.product'], // 🎉 Give me the product data too
+//   });
+//   console.log(JSON.stringify(productPriceData, null, 2));
 
-  h1 span,
-  h2 span {
-    color: ${COLORS.primary};
-    font-weight: ${WEIGHTS.bold};
-    text-transform: uppercase;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-    margin: 0;
-    margin-bottom: 10px;
-    font-style: italic;
-  }
-`;
+//   return {
+//     props: { productPriceData },
+//   };
+// }
 
 const PaymentWrapper = styled.section``;
+
+// TODO: To put in Footer
+// <a
+//   href="https://www.buymeacoffee.com/givemethe.money"
+//   target="_blank"
+//   rel="noreferrer"
+// >
+//   <Image
+//     src="/images/bmc-button.png"
+//     alt="Buy me a coffee button"
+//     quality={75}
+//     width={200}
+//     height={56}
+//     placeholder="blur"
+//     blurDataURL
+//   />
+// </a>;
