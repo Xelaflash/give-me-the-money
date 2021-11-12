@@ -51,74 +51,84 @@ const ProductsWrapper = styled.div`
   padding: 16px;
 `;
 
-// TODO: Make Card grid and use subgrid to align vertically all items inside
-
 const ProductsList = styled.ul`
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  gap: 16px;
-  margin:56px auto;
+  gap: 1rem;
+  margin: 3rem auto;
+
   li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-rows: 50px 100px 1fr auto;
+    grid-gap: 10px;
     box-shadow: 0px 2px 16px hsl(162 52% 31% / 0.8);
-    flex: 0 1 300px;
-    height: 450px;
+    width: 310px;
+    height: 425px;
     border-radius: 8px;
-    padding: 16px;
+    padding: 1rem 2rem;
     background: ${COLORS.white};
   }
-    .card {
-      background: var(--dataUri);
-      position: relative;
-      z-index: 1;
-    }
-    .card:nth-child(2) {
-      background: var(--dataUriPrimaryCard);
-      z-index: 2;
-      height: 498px;
-      margin: -24px -32px;
-      button {
-        margin-top: 30px;
-      }
-    }
-    h3 {
-      font-size: 1.7rem;
-      margin: 8px auto;
-      text-align: center;
-      color: ${COLORS.primary};
-      font-weight: ${WEIGHTS.bold};
-    }
-    p {
-      font-size: 2rem;
-      margin: 16px auto;
-    }
-
-    #description {
-      font-size: 1.25rem;
-      font-weight: ${WEIGHTS.medium};
-      color: ${COLORS.secondary};
-      margin-top: 80px;
-      text-align: center;
-      height: 100px;
-    }
-
+  .card {
+    background: var(--dataUri);
+    position: relative;
+    z-index: 1;
+  }
+  .card:nth-child(2) {
+    background: var(--dataUriPrimaryCard);
+    z-index: 2;
+    height: 475px;
+    margin: -25px;
     button {
-      margin: 5px auto;
-      padding: 8px 16px;
-      font-size: 1.3rem;
-      background: ${COLORS.primary};
-      border-radius: 4px;
-      color: ${COLORS.white};
-      border: 0;
-      font-weight: ${WEIGHTS.bold};
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.7);
-    }
-    button:hover {
-      opacity: 0.8;
+      margin-top: 30px;
     }
   }
+  h3 {
+    font-size: 1.7rem;
+
+    margin: 8px auto;
+    text-align: center;
+    color: ${COLORS.primary};
+    font-weight: ${WEIGHTS.bold};
+  }
+  p {
+    font-size: 2rem;
+    margin: 16px auto;
+  }
+
+  #description {
+    font-size: 1.25rem;
+    font-weight: ${WEIGHTS.medium};
+    color: ${COLORS.secondary};
+    text-align: center;
+    margin-top: 4rem;
+  }
+
+  button {
+    margin: 5px auto;
+    padding: 8px 16px;
+    font-size: 1.3rem;
+    background: ${COLORS.primary};
+    border-radius: 4px;
+    color: ${COLORS.white};
+    border: 0;
+    font-weight: ${WEIGHTS.bold};
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.7);
+  }
+  button:hover {
+    opacity: 0.8;
+  }
+
+    @media (max-width: 56rem) {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin: 1rem auto;
+    .card:nth-child(2) {
+      margin: 0;
+    }
+  }
+}
 `;

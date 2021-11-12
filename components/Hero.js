@@ -20,8 +20,7 @@ const HeroWrapper = styled.section`
   text-align: center;
 
   h1 {
-    padding-top: 50px;
-    font-size: 3.5rem;
+    font-size: clamp(1.5rem, 4vw + 1rem, 3rem );
     font-weight: ${WEIGHTS.bold};
     margin: 0;
   }
