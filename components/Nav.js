@@ -13,8 +13,8 @@ export default function Nav() {
   return (
     <NavWrapper>
       <button type="button" onClick={openCart}>
-        <VisuallyHidden>Cart</VisuallyHidden>
         <ShoppingCart color={`${COLORS.white}`} size={32} />
+        <VisuallyHidden>Cart</VisuallyHidden>
       </button>
     </NavWrapper>
   );
@@ -27,8 +27,9 @@ const NavWrapper = styled.nav`
   padding: 10px 15px;
 
   button {
+    min-height: var(--min-tap-height, 40px);
     background: transparent;
     border: none;
-    padding-right: 25px;
+    margin-right: 25px;
   }
 `;

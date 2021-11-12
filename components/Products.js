@@ -83,14 +83,15 @@ const ProductsList = styled.ul`
       margin-top: 30px;
     }
   }
+
   h3 {
     font-size: 1.7rem;
-
     margin: 8px auto;
     text-align: center;
     color: ${COLORS.primary};
     font-weight: ${WEIGHTS.bold};
   }
+
   p {
     font-size: 2rem;
     margin: 16px auto;
@@ -113,7 +114,6 @@ const ProductsList = styled.ul`
     color: ${COLORS.white};
     border: 0;
     font-weight: ${WEIGHTS.bold};
-    cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.7);
   }

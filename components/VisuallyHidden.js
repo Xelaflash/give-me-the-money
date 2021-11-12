@@ -11,6 +11,7 @@ const hiddenStyles = {
   padding: 0,
   border: 0,
 };
+
 const VisuallyHidden = ({ children, ...delegated }) => {
   const [forceShow, setForceShow] = React.useState(false);
   React.useEffect(() => {
