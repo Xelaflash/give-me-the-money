@@ -22,6 +22,7 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />;
         </Head>
         <main>
+          {/* put cart here */}
           
           <Hero />
           <PaymentWrapper />

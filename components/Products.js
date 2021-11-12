@@ -29,9 +29,7 @@ export default function Products() {
   return (
     <ProductsWrapper>
       <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
-              <CartCount
-              count={cartItems.length}
-            />
+      <CartCount count={cartItems.length} />
       <ProductList products={products} addToCart={addToCart} />
     </ProductsWrapper>
   );
