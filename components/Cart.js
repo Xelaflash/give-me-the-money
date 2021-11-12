@@ -12,9 +12,8 @@ import { useCart } from '../utils/cartState';
 //   ...
 // };
 
-export default function Cart() {
+export default function Cart({ cartItems, removeFromCart }) {
   const { cartOpen, closeCart } = useCart();
-
   return (
     <CartStyles open={cartOpen}>
       <header>
@@ -23,6 +22,17 @@ export default function Cart() {
           &times;
         </CloseButton>
       </header>
+      {/* TODO: style cart  + Add sum of CartItems*/}
+      <ul>
+        {cartItems.map((item, index) =>
+          <li key={index}>
+            <p>{item.product.title}</p>
+            <p>{item.product.price} </p>
+            <button type="button" onClick={() => removeFromCart(index)}>Remove from cart</button>
+          </li>
+        )}
+      </ul>
+      {!cartItems.length && <span>No products in cart.</span>}
       <form action="/create-checkout-session" method="POST">
         <button type="submit">Checkout</button>
       </form>

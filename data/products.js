@@ -1,4 +1,4 @@
-[
+const PRODUCT_DATA = [
   {
     "id": "prod_KUd6AhZmT9CKgQ",
     "title": "Light",
@@ -21,3 +21,5 @@
     "price": 100
   }
 ]
+
+export default PRODUCT_DATA;

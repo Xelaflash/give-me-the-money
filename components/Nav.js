@@ -1,11 +1,13 @@
+import { useState } from 'react';
 // Styles import
 import styled from 'styled-components';
-import { ShoppingCart } from 'react-feather';
-import { useState } from 'react';
 import { COLORS } from '../styles/constants';
+import { ShoppingCart } from 'react-feather';
 
 //  Components
 import VisuallyHidden from './VisuallyHidden';
+
+// utils
 import { useCart } from '../utils/cartState';
 
 export default function Nav() {

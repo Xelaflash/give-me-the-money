@@ -8,7 +8,7 @@ import { COLORS, WEIGHTS } from '../styles/constants';
 
 // components
 import Layout from '../components/Layout';
-import Cart from '../components/Cart';
+
 import Hero from '../components/Hero';
 import Products from '../components/Products';
 
@@ -22,7 +22,7 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />;
         </Head>
         <main>
-          <Cart />
+          
           <Hero />
           <PaymentWrapper />
           <Products />
