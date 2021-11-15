@@ -50,8 +50,11 @@ export default function Home() {
     }
   };
 
-  const removeFromCart = (index) => {
-    setCartItems((oldCart) => [...oldCart.slice(0, index), ...oldCart.slice(index + 1)]);
+  const removeFromCart = (id) => {
+    // find the Index of cartItem object to trash
+    const ItemTodeleteIndex = cartItems.findIndex((ItemToDelete) => ItemToDelete.product.id === id);
+    // setNew CartItems state
+    setCartItems((oldCart) => [...oldCart.slice(0, ItemTodeleteIndex), ...oldCart.slice(ItemTodeleteIndex + 1)]);
   };
 
   return (
@@ -63,9 +66,7 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />;
         </Head>
         <Nav count={cartItems.length} />
-        {/* <CartCount count={cartItems.length} /> */}
         <main>
-          {/* put cart here */}
           <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
           <Hero />
           <Products addToCart={addToCart} />

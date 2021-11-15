@@ -27,7 +27,7 @@ export default function Cart({ cartItems, removeFromCart }) {
       </header>
       <ul>
         {cartItems.map((cartItem, index) => (
-          <CartItem key={index} cartItem={cartItem} />
+          <CartItem key={index} cartItem={cartItem} removeFromCart={removeFromCart} />
         ))}
       </ul>
       {!cartItems.length && <span>No products in cart.</span>}

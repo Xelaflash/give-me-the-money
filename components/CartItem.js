@@ -1,6 +1,11 @@
-// import { PropTypes } from 'prop-types';
+// nextJS
 import Image from 'next/image';
+// styles
 import styled from 'styled-components';
+import { Trash2 } from 'react-feather';
+import { COLORS } from '../styles/constants';
+// utils
+import { useCart } from '../utils/cartState';
 import formatMoney from '../utils/formatMoney';
 
 // stuff taken from NextJs docs for placeHolder color on Image
@@ -17,7 +22,9 @@ const rgbDataURL = (r, g, b) =>
     triplet(0, r, g) + triplet(b, 255, 255)
   }/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==`;
 
-export default function CartItem({ cartItem }) {
+export default function CartItem({ cartItem, removeFromCart }) {
+  const { closeCart } = useCart();
+
   return (
     <CartItemStyles>
       <div className="img-wrapper">
@@ -36,7 +43,19 @@ export default function CartItem({ cartItem }) {
         <p className="qty"> (&times; {cartItem.product.quantity})</p>
         <h3 className="price">{formatMoney(cartItem.product.price * cartItem.product.quantity)}</h3>
       </ProductPriceWrapper>
-      {/* <RemoveFromCart id={cartItem.id} /> */}
+      <RemoveBtn
+        type="button"
+        title="Remove item from Cart"
+        onClick={() => {
+          removeFromCart(cartItem.product.id);
+          setTimeout(() => {
+            closeCart();
+          }, 1500);
+        }}
+      >
+        <Trash2 color={`${COLORS.veryPaleGreen}`} />
+      </RemoveBtn>
+      );
     </CartItemStyles>
   );
 }
@@ -76,5 +95,16 @@ const ProductPriceWrapper = styled.div`
   .price {
     flex: 0 1 25%;
     font-size: 1.5rem;
+  }
+`;
+
+const RemoveBtn = styled.button`
+  background: transparent;
+  border: none;
+  margin: 1rem;
+  font-size: 2rem;
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
   }
 `;
