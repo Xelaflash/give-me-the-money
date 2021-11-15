@@ -41,9 +41,9 @@ export default function ProductList({ products, addToCart }) {
               type="button"
               onClick={() => {
                 addToCart({ product });
-                // setTimeout(() => {
-                //   openCart();
-                // }, 2000);
+                setTimeout(() => {
+                  openCart();
+                }, 2000);
               }}
             >
               Give Now
