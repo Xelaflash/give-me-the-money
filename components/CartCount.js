@@ -20,7 +20,9 @@ export default function CartCount({ count }) {
           key={count}
           timeout={{ enter: 600, exit: 600 }}
         >
-          <Dot ref={itemRef}>{count}</Dot>
+          <Dot ref={itemRef}>
+            <div className="count_nbr">{count}</div>
+          </Dot>
         </CSSTransition>
       </TransitionGroup>
     </AnimationStyles>
@@ -32,9 +34,9 @@ const Dot = styled.div`
   color: ${COLORS.white};
   border-radius: 50%;
   padding: 0.5rem;
-  line-height: 2rem;
-  min-width: 3rem;
-  margin-left: 1rem;
+  line-height: 1.5rem;
+  min-width: 2.1rem;
+  height: 2rem;
   /* below makes all numbers same width */
   font-feature-settings: 'tnum';
   font-variant-numeric: tabular-nums;
@@ -42,6 +44,7 @@ const Dot = styled.div`
 
 const AnimationStyles = styled.span`
   position: relative;
+  margin: -2.5rem 0 0 -0.8rem;
   .count {
     display: block;
     position: relative;
@@ -61,5 +64,10 @@ const AnimationStyles = styled.span`
   }
   .count-exit-active {
     transform: scale(3.2) rotateY(0.5turn);
+  }
+  .count_nbr {
+    line-height: 1rem;
+    font-size: 1rem;
+    text-align: center;
   }
 `;

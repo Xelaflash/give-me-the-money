@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 // Styles import
 import { ShoppingCart } from 'react-feather';
 import styled from 'styled-components';
@@ -15,11 +14,13 @@ export default function Nav({ count }) {
 
   return (
     <NavWrapper>
-      <button type="button" onClick={openCart}>
-        <ShoppingCart color={`${COLORS.white}`} size={32} />
-        <VisuallyHidden>Cart</VisuallyHidden>
-      </button>
-      <CartCount count={count} />
+      <CartWrapper>
+        <button type="button" onClick={openCart}>
+          <ShoppingCart color={`${COLORS.white}`} size={32} />
+          <VisuallyHidden>Cart</VisuallyHidden>
+          <CartCount count={count} />
+        </button>
+      </CartWrapper>
     </NavWrapper>
   );
 }
@@ -31,9 +32,17 @@ const NavWrapper = styled.nav`
   padding: 10px 15px;
 
   button {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem;
+    cursor: pointer;
     min-height: var(--min-tap-height, 40px);
     background: transparent;
     border: none;
-    margin-right: 25px;
   }
+`;
+
+const CartWrapper = styled.div`
+  display: flex;
+  padding: 1rem;
 `;
