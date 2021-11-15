@@ -1,21 +1,24 @@
 // transition pkg
+import { useRef } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 // Styles import
 import styled from 'styled-components';
 import { COLORS } from '../styles/constants';
 
 export default function CartCount({ count }) {
+  const nodeRef = useRef(null);
   return (
     <AnimationStyles>
       <TransitionGroup>
         <CSSTransition
+          nodeRef={nodeRef}
           unmountOnExit
           className="count"
           classNames="count"
           key={count}
           timeout={{ enter: 600, exit: 600 }}
         >
-          <Dot>{count}</Dot>
+          <Dot ref={nodeRef}>{count}</Dot>
         </CSSTransition>
       </TransitionGroup>
     </AnimationStyles>

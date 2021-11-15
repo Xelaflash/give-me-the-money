@@ -4,11 +4,12 @@ import Head from 'next/head';
 // import Image from 'next/image';
 
 // styles imports
-import styled from 'styled-components';
+// import styled from 'styled-components';
 // import { COLORS, WEIGHTS } from '../styles/constants';
 
 // components
 import Layout from '../components/Layout';
+import Nav from '../components/Nav';
 import Hero from '../components/Hero';
 import Products from '../components/Products';
 import CartCount from '../components/CartCount';
@@ -47,20 +48,18 @@ export default function Home() {
           <meta name="description" content="Give me the Money Website" />
           <link rel="icon" href="/favicon.ico" />;
         </Head>
+        <Nav />
         <main>
           {/* put cart here */}
           <CartCount count={cartItems.length} />
           <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
           <Hero />
-          <PaymentWrapper />
           <Products addToCart={addToCart} />
         </main>
       </div>
     </Layout>
   );
 }
-
-const PaymentWrapper = styled.section``;
 
 // TODO: To put in Footer
 // <a
