@@ -44,7 +44,7 @@ const Dot = styled.div`
 
 const AnimationStyles = styled.span`
   position: relative;
-  margin: -2.5rem 0 0 -0.8rem;
+  margin: -32px 0 0 -8px;
   .count {
     display: block;
     position: relative;
