@@ -4,7 +4,8 @@ import { COLORS } from '../styles/constants';
 
 // Utils imports
 import { useCart } from '../utils/cartState';
-// import formatMoney from '../utils/formatMoney';
+import formatMoney from '../utils/formatMoney';
+import calcTotalCartPrice from '../utils/calcTotalCartPrice';
 
 //  Component
 import CartItem from './CartItem';
@@ -14,6 +15,9 @@ import CartItem from './CartItem';
 // const redirectToCheckout = async () => {
 //   ...
 // };
+
+// !! TODO: Check and fix bug when adding cartItem (already in cart) with cart open
+// !! quantity not always update in cart and in LocalStorage
 
 export default function Cart({ cartItems, removeFromCart }) {
   const { cartOpen, closeCart } = useCart();
@@ -32,6 +36,10 @@ export default function Cart({ cartItems, removeFromCart }) {
       </ul>
       {!cartItems.length && <span>No products in cart.</span>}
       <footer>
+        <p>
+          TOTAL: <span>{formatMoney(calcTotalCartPrice(cartItems))}</span>
+        </p>
+
         <form action="/create-checkout-session" method="POST">
           <button type="submit">Checkout</button>
         </form>
@@ -76,14 +84,16 @@ const CartStyles = styled.div`
   footer {
     border-top: 10px double ${COLORS.primary};
     margin-top: 2rem;
-    padding-top: 2rem;
-    display: grid;
-    grid-template-columns: auto auto;
-    align-items: center;
-    font-size: 3rem;
+    padding: 2rem;
+    font-size: 2.5rem;
     font-weight: 900;
     p {
+      display: flex;
+      justify-content: flex-end;
       margin: 0;
+      span {
+        padding-left: 5rem;
+      }
     }
   }
 `;

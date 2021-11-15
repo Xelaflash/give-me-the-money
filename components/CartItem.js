@@ -48,14 +48,10 @@ export default function CartItem({ cartItem, removeFromCart }) {
         title="Remove item from Cart"
         onClick={() => {
           removeFromCart(cartItem.product.id);
-          setTimeout(() => {
-            closeCart();
-          }, 1500);
         }}
       >
         <Trash2 color={`${COLORS.veryPaleGreen}`} />
       </RemoveBtn>
-      );
     </CartItemStyles>
   );
 }
