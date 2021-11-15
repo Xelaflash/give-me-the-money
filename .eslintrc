@@ -1,5 +1,5 @@
 {
-  "extends": ["wesbos/typescript", "next/core-web-vitals"],
+  "extends": ["wesbos"],
   "rules": {
     "no-console": 2,
     "prettier/prettier": [
