@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 // Styles import
+import { ShoppingCart } from 'react-feather';
 import styled from 'styled-components';
 import { COLORS } from '../styles/constants';
-import { ShoppingCart } from 'react-feather';
 
 //  Components
 import VisuallyHidden from './VisuallyHidden';
@@ -12,6 +12,7 @@ import { useCart } from '../utils/cartState';
 
 export default function Nav() {
   const { openCart } = useCart();
+
   return (
     <NavWrapper>
       <button type="button" onClick={openCart}>

@@ -1,5 +1,6 @@
 // styles imports
 import styled from 'styled-components';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { COLORS, WEIGHTS } from '../styles/constants';
 
 // utils
@@ -7,27 +8,20 @@ import formatMoney from '../utils/formatMoney';
 import { useCart } from '../utils/cartState';
 
 // svg bg
-import { renderToStaticMarkup } from 'react-dom/server';
 import SvgBackground from './SvgBackground';
 import SvgBgPrimaryCard from './SvgBgPrimaryCard';
 
-
 export default function ProductList({ products, addToCart }) {
+  const { openCart } = useCart();
 
-    const { openCart } = useCart();
-
-    // Svg background
-  const svgString = encodeURIComponent(
-    renderToStaticMarkup(<SvgBackground />)
-  );
+  // Svg background
+  const svgString = encodeURIComponent(renderToStaticMarkup(<SvgBackground />));
   const dataUri = `url("data:image/svg+xml,${svgString}")`;
 
-  const svgString2 = encodeURIComponent(
-    renderToStaticMarkup(<SvgBgPrimaryCard />)
-  );
+  const svgString2 = encodeURIComponent(renderToStaticMarkup(<SvgBgPrimaryCard />));
   const dataUri2 = `url("data:image/svg+xml,${svgString2}")`;
 
-  return(
+  return (
     <ProductsList>
       {products.map((product) => {
         const { id, title, image, description, price } = product;
@@ -43,14 +37,14 @@ export default function ProductList({ products, addToCart }) {
             <h3>{title}</h3>
             <p>{formatMoney(price)}</p>
             <p id="description">{description}</p>
-            <button 
-            type="button"
-            onClick={() => {
-              addToCart({product});
-              setTimeout(() => {
-                openCart();
-              }, 1700);
-            }}
+            <button
+              type="button"
+              onClick={() => {
+                addToCart({ product });
+                // setTimeout(() => {
+                //   openCart();
+                // }, 2000);
+              }}
             >
               Give Now
             </button>
@@ -58,7 +52,7 @@ export default function ProductList({ products, addToCart }) {
         );
       })}
     </ProductsList>
-  )
+  );
 }
 
 const ProductsList = styled.ul`
@@ -132,12 +126,12 @@ const ProductsList = styled.ul`
   }
 
   @media (max-width: 56rem) {
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  margin: 1rem auto;
-  .card:nth-child(2) {
-    margin: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin: 1rem auto;
+    .card:nth-child(2) {
+      margin: 0;
+    }
   }
-}
 `;

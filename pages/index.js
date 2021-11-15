@@ -8,9 +8,9 @@ import { COLORS, WEIGHTS } from '../styles/constants';
 
 // components
 import Layout from '../components/Layout';
-
 import Hero from '../components/Hero';
 import Products from '../components/Products';
+// import CartCount from './CartCount';
 
 export default function Home() {
   return (
@@ -23,16 +23,15 @@ export default function Home() {
         </Head>
         <main>
           {/* put cart here */}
-          
+
           <Hero />
           <PaymentWrapper />
           <Products />
-          </main>
+        </main>
       </div>
     </Layout>
   );
 }
-
 
 const PaymentWrapper = styled.section``;
 

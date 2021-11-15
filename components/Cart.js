@@ -22,15 +22,17 @@ export default function Cart({ cartItems, removeFromCart }) {
           &times;
         </CloseButton>
       </header>
-      {/* TODO: style cart  + Add sum of CartItems*/}
+      {/* TODO: style cart  + Add sum of CartItems */}
       <ul>
-        {cartItems.map((item, index) =>
+        {cartItems.map((item, index) => (
           <li key={index}>
             <p>{item.product.title}</p>
             <p>{item.product.price} </p>
-            <button type="button" onClick={() => removeFromCart(index)}>Remove from cart</button>
+            <button type="button" onClick={() => removeFromCart(index)}>
+              Remove from cart
+            </button>
           </li>
-        )}
+        ))}
       </ul>
       {!cartItems.length && <span>No products in cart.</span>}
       <form action="/create-checkout-session" method="POST">
