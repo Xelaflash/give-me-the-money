@@ -12,28 +12,42 @@ import Layout from '../components/Layout';
 import Nav from '../components/Nav';
 import Hero from '../components/Hero';
 import Products from '../components/Products';
-// import CartCount from '../components/CartCount';
 import Cart from '../components/Cart';
 
 export default function Home() {
-  // set cart state here to be passed down to various component (CartCount, Cart && AddToCart)
+  // *set cart state here to be passed down to various component (CartCount, Cart && AddToCart)
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    // retrieve cartItems from localStorage and put in state if items in storage
+    // *retrieve cartItems from localStorage and put in state if items in storage
     const savedCartItems = JSON.parse(localStorage.getItem('cartItems'));
     if (savedCartItems) {
       setCartItems(savedCartItems);
     }
   }, []);
 
-  // we set cartItems in local storage to persist data and to use this info in CartCount
+  // *we set cartItems in local storage to persist data and to use this info in CartCount
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
   const addToCart = (product) => {
-    setCartItems((oldCart) => [...oldCart, product]);
+    // *will give an array of products (ids) in cart
+    const IdOfItemInCart = cartItems.map((cartItem) => cartItem.product.id);
+    // console.log(IdOfItemInCart);
+    // *check if product.product.id present in IdOfItemInCart array
+    // *will return a bool
+    const ProductAlreadyInCart = IdOfItemInCart.includes(product.product.id);
+    // console.log(ProductAlreadyInCart);
+    // *if false update qty
+    if (ProductAlreadyInCart) {
+      product.product.quantity += 1;
+      // console.log('Quantity updated:', cartItems);
+    } else {
+      // *if true add item to cart
+      setCartItems((oldCart) => [...oldCart, product]);
+      // console.log('item added to cart');
+    }
   };
 
   const removeFromCart = (index) => {

@@ -18,24 +18,23 @@ const rgbDataURL = (r, g, b) =>
   }/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==`;
 
 export default function CartItem({ cartItem }) {
-  const { product } = cartItem;
-  if (!product) return null;
   return (
     <CartItemStyles>
       <div className="img-wrapper">
         <StyledImage
           width={125}
           height={85}
-          src={product.image}
+          src={cartItem.product.image}
           placeholder="blur"
           blurDataURL={rgbDataURL(237, 181, 6)}
-          alt={product.title}
+          alt={cartItem.product.title}
           className="item_img"
         />
       </div>
       <ProductPriceWrapper>
-        <h3 className="title">{product.title}</h3>
-        <h3 className="price">{formatMoney(product.price)}</h3>
+        <h3 className="title">{cartItem.product.title}</h3>
+        <p className="qty"> (&times; {cartItem.product.quantity})</p>
+        <h3 className="price">{formatMoney(cartItem.product.price * cartItem.product.quantity)}</h3>
       </ProductPriceWrapper>
       {/* <RemoveFromCart id={cartItem.id} /> */}
     </CartItemStyles>
@@ -65,14 +64,17 @@ const StyledImage = styled(Image)`
 const ProductPriceWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 3rem;
-  h3 {
-    font-size: 1.5rem;
-  }
+  margin-left: 2rem;
   .title {
-    flex: 0 1 75%;
+    flex: 0 1 55%;
+    font-size: 1.3rem;
+  }
+  .qty {
+    flex: 0 1 25%;
+    font-size: 1.2rem;
   }
   .price {
     flex: 0 1 25%;
+    font-size: 1.5rem;
   }
 `;
