@@ -12,7 +12,7 @@ import Layout from '../components/Layout';
 import Nav from '../components/Nav';
 import Hero from '../components/Hero';
 import Products from '../components/Products';
-import CartCount from '../components/CartCount';
+// import CartCount from '../components/CartCount';
 import Cart from '../components/Cart';
 
 export default function Home() {
@@ -48,10 +48,10 @@ export default function Home() {
           <meta name="description" content="Give me the Money Website" />
           <link rel="icon" href="/favicon.ico" />;
         </Head>
-        <Nav />
+        <Nav count={cartItems.length} />
+        {/* <CartCount count={cartItems.length} /> */}
         <main>
           {/* put cart here */}
-          <CartCount count={cartItems.length} />
           <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
           <Hero />
           <Products addToCart={addToCart} />

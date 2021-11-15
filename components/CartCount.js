@@ -1,24 +1,26 @@
 // transition pkg
-import { useRef } from 'react';
+import { createRef } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 // Styles import
 import styled from 'styled-components';
 import { COLORS } from '../styles/constants';
 
 export default function CartCount({ count }) {
-  const nodeRef = useRef(null);
+  // we use create ref to fix a warning from a package
+  // https://github.com/reactjs/react-transition-group/issues/687
+  const itemRef = createRef(null);
   return (
     <AnimationStyles>
       <TransitionGroup>
         <CSSTransition
-          nodeRef={nodeRef}
+          nodeRef={itemRef}
           unmountOnExit
           className="count"
           classNames="count"
           key={count}
           timeout={{ enter: 600, exit: 600 }}
         >
-          <Dot ref={nodeRef}>{count}</Dot>
+          <Dot ref={itemRef}>{count}</Dot>
         </CSSTransition>
       </TransitionGroup>
     </AnimationStyles>

@@ -6,11 +6,11 @@ import { COLORS } from '../styles/constants';
 
 //  Components
 import VisuallyHidden from './VisuallyHidden';
-
+import CartCount from './CartCount';
 // utils
 import { useCart } from '../utils/cartState';
 
-export default function Nav() {
+export default function Nav({ count }) {
   const { openCart } = useCart();
 
   return (
@@ -19,6 +19,7 @@ export default function Nav() {
         <ShoppingCart color={`${COLORS.white}`} size={32} />
         <VisuallyHidden>Cart</VisuallyHidden>
       </button>
+      <CartCount count={count} />
     </NavWrapper>
   );
 }
