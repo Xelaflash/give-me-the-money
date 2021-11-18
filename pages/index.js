@@ -18,34 +18,40 @@ export default function Home() {
   // set cart state here to be passed down to various component (CartCount, Cart && AddToCart)
   const [cartItems, setCartItems] = useState([]);
 
-  // useEffect(() => {
-  //   // retrieve cartItems from localStorage and put in state if items in storage
-  //   const savedCartItems = JSON.parse(localStorage.getItem('cartItems'));
-  //   if (savedCartItems) {
-  //     setCartItems(savedCartItems);
-  //   }
-  // }, []);
+  useEffect(() => {
+    // retrieve cartItems from localStorage and put in state if items in storage
+    const savedCartItems = JSON.parse(localStorage.getItem('cartItems'));
+    if (savedCartItems) {
+      setCartItems(savedCartItems);
+    }
+  }, []);
 
-  // // we set cartItems in local storage to persist data and to use this info in CartCount
-  // useEffect(() => {
-  //   localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  // }, [cartItems]);
+  // we set cartItems in local storage to persist data and to use this info in CartCount
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
 
+  // !! TODO: Maybe some refacto to find for Add to cart
   const addToCart = (product) => {
     // will give an array of products (ids) in cart
     const IdOfItemInCart = cartItems.map((cartItem) => cartItem.product.id);
-    // console.log(IdOfItemInCart);
     // check if product.product.id present in IdOfItemInCart array
     // will return a bool
     const ProductAlreadyInCart = IdOfItemInCart.includes(product.product.id);
-    // console.log(ProductAlreadyInCart);
     // if false update qty
     if (ProductAlreadyInCart) {
-      product.product.quantity += 1;
-      //  !! TODO: Find a way replace old state by new one
-      // below working but do not trigger cart update (visual)
-      setCartItems(cartItems);
-      console.log('Quantity updated:', cartItems);
+      // 1.shallow copy of  array of items in state
+      const cartItemsCopy = [...cartItems];
+      // 1.1  find index of item to mutate
+      const index = cartItemsCopy.findIndex((item) => item.product.id === product.product.id);
+      //  2. copy of cartItem object to mutate
+      const itemToMutateCopy = { ...cartItemsCopy[index] };
+      //  update qty
+      itemToMutateCopy.product.quantity += 1;
+      // put back new updated object in Array of items
+      cartItemsCopy[index] = itemToMutateCopy;
+      // set the state to the new copy
+      setCartItems(cartItemsCopy);
     } else {
       // if true add item to cart
       setCartItems((oldCart) => [...oldCart, product]);

@@ -25,8 +25,6 @@ const rgbDataURL = (r, g, b) =>
 export default function CartItem({ cartItem, removeFromCart }) {
   const { closeCart } = useCart();
 
-  console.log('ds cartItem:', cartItem);
-
   return (
     <CartItemStyles>
       <div className="img-wrapper">

@@ -2,6 +2,7 @@
   "extends": ["wesbos"],
   "rules": {
     "no-console": 2,
+    allowTernary: true,
     "prettier/prettier": [
       "error",
       {

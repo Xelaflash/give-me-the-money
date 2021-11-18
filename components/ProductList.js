@@ -12,7 +12,7 @@ import SvgBackground from './SvgBackground';
 import SvgBgPrimaryCard from './SvgBgPrimaryCard';
 
 export default function ProductList({ products, addToCart }) {
-  const { openCart } = useCart();
+  const { openCart, cartOpen } = useCart();
 
   // Svg background
   const svgString = encodeURIComponent(renderToStaticMarkup(<SvgBackground />));
@@ -39,9 +39,9 @@ export default function ProductList({ products, addToCart }) {
             type="button"
             onClick={() => {
               addToCart({ product });
-              setTimeout(() => {
-                openCart();
-              }, 2000);
+              !cartOpen ? 
+                setTimeout(() => {openCart();}, 1000)
+              : null;
             }}
           >
             Give Now
