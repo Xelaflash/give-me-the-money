@@ -9,12 +9,8 @@ import calcTotalCartPrice from '../utils/calcTotalCartPrice';
 
 //  Component
 import CartItem from './CartItem';
+import { Checkout } from "./Checkout";
 
-// import { Checkout } from "./Checkout";
-
-// const redirectToCheckout = async () => {
-//   ...
-// };
 
 export default function Cart({ cartItems, removeFromCart }) {
   const { cartOpen, closeCart } = useCart();
@@ -36,10 +32,7 @@ export default function Cart({ cartItems, removeFromCart }) {
         <p>
           TOTAL: <span>{formatMoney(calcTotalCartPrice(cartItems))}</span>
         </p>
-
-        <form action="/create-checkout-session" method="POST">
-          <button type="submit">Checkout</button>
-        </form>
+        <Checkout />
       </footer>
     </CartStyles>
   );
