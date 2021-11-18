@@ -23,34 +23,31 @@ export default function ProductList({ products, addToCart }) {
 
   return (
     <ProductsList>
-      {products.map((product) => {
-        const { id, title, image, description, price } = product;
-        return (
-          <li
-            className="card"
-            key={id}
-            style={{
-              '--dataUri': dataUri,
-              '--dataUriPrimaryCard': dataUri2,
+      {products.map((product) => (
+        <li
+          className="card"
+          key={product.id}
+          style={{
+            '--dataUri': dataUri,
+            '--dataUriPrimaryCard': dataUri2,
+          }}
+        >
+          <h3>{product.title}</h3>
+          <p>{formatMoney(product.price)}</p>
+          <p id="description">{product.description}</p>
+          <button
+            type="button"
+            onClick={() => {
+              addToCart({ product });
+              setTimeout(() => {
+                openCart();
+              }, 2000);
             }}
           >
-            <h3>{title}</h3>
-            <p>{formatMoney(price)}</p>
-            <p id="description">{description}</p>
-            <button
-              type="button"
-              onClick={() => {
-                addToCart({ product });
-                setTimeout(() => {
-                  openCart();
-                }, 2000);
-              }}
-            >
-              Give Now
-            </button>
-          </li>
-        );
-      })}
+            Give Now
+          </button>
+        </li>
+      ))}
     </ProductsList>
   );
 }

@@ -8,7 +8,6 @@ import ProductList from './ProductList';
 
 export default function Products({ addToCart }) {
   const [products] = useState(PRODUCT_DATA);
-
   return (
     <ProductsWrapper>
       <ProductList products={products} addToCart={addToCart} />

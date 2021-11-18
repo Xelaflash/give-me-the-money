@@ -3,7 +3,7 @@ import Image from 'next/image';
 // styles
 import styled from 'styled-components';
 import { Trash2 } from 'react-feather';
-import { COLORS } from '../styles/constants';
+import { COLORS, WEIGHTS } from '../styles/constants';
 // utils
 import { useCart } from '../utils/cartState';
 import formatMoney from '../utils/formatMoney';
@@ -25,12 +25,14 @@ const rgbDataURL = (r, g, b) =>
 export default function CartItem({ cartItem, removeFromCart }) {
   const { closeCart } = useCart();
 
+  console.log('ds cartItem:', cartItem);
+
   return (
     <CartItemStyles>
       <div className="img-wrapper">
         <StyledImage
-          width={125}
-          height={85}
+          width={100}
+          height={60}
           src={cartItem.product.image}
           placeholder="blur"
           blurDataURL={rgbDataURL(237, 181, 6)}
@@ -39,8 +41,13 @@ export default function CartItem({ cartItem, removeFromCart }) {
         />
       </div>
       <ProductPriceWrapper>
-        <h3 className="title">{cartItem.product.title}</h3>
-        <p className="qty"> (&times; {cartItem.product.quantity})</p>
+        <div className="title-Wrapper">
+          <h3 className="title">{cartItem.product.title}</h3>
+          <p className="qty">
+            {' '}
+            ({formatMoney(cartItem.product.price)} &times; {cartItem.product.quantity})
+          </p>
+        </div>
         <h3 className="price">{formatMoney(cartItem.product.price * cartItem.product.quantity)}</h3>
       </ProductPriceWrapper>
       <RemoveBtn
@@ -68,7 +75,7 @@ const CartItemStyles = styled.li`
   }
   /* the magic happens here */
   .img-wrapper {
-    box-shadow: 0px 1px 10px 2px hsl(162 52% 31% / 0.8);
+    box-shadow: 0px 1px 8px 2px hsl(162 52% 31% / 0.8);
   }
 `;
 
@@ -79,17 +86,18 @@ const StyledImage = styled(Image)`
 const ProductPriceWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-left: 2rem;
+  justify-content: space-between;
+  margin-left: 1rem;
   .title {
-    flex: 0 1 55%;
-    font-size: 1.3rem;
-  }
-  .qty {
-    flex: 0 1 25%;
+    flex: 0 0 65%;
     font-size: 1.2rem;
   }
+  .qty {
+    font-size: 1rem;
+    font-weight: ${WEIGHTS.normal};
+  }
   .price {
-    flex: 0 1 25%;
+    flex: 0 1 35%;
     font-size: 1.5rem;
   }
 `;

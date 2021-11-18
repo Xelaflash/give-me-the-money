@@ -16,9 +16,6 @@ import CartItem from './CartItem';
 //   ...
 // };
 
-// !! TODO: Check and fix bug when adding cartItem (already in cart) with cart open
-// !! quantity not always update in cart and in LocalStorage
-
 export default function Cart({ cartItems, removeFromCart }) {
   const { cartOpen, closeCart } = useCart();
   return (
@@ -30,8 +27,8 @@ export default function Cart({ cartItems, removeFromCart }) {
         </CloseButton>
       </header>
       <ul>
-        {cartItems.map((cartItem, index) => (
-          <CartItem key={index} cartItem={cartItem} removeFromCart={removeFromCart} />
+        {cartItems.map((cartItem) => (
+          <CartItem key={cartItem.product.id} cartItem={cartItem} removeFromCart={removeFromCart} />
         ))}
       </ul>
       {!cartItems.length && <span>No products in cart.</span>}

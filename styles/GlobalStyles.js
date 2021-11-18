@@ -58,7 +58,7 @@ const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: auto;
   }
 
-  #root {
+  :root {
     /*
       Create a stacking context, without a z-index.
       This ensures that all portal content (modals and tooltips) will
@@ -67,7 +67,7 @@ const GlobalStyles = createGlobalStyle`
     isolation: isolate;
   }
 
-  html, body, #root {
+  html, body {
     height: 100%;
   }
 
