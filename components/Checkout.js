@@ -1,37 +1,47 @@
-import { useState } from 'react';
-
+import { useEffect, useState } from 'react';
 // libs
 import { useShoppingCart } from 'use-shopping-cart'
-
+// utils
+import getStripe from '../utils/get-stripe';
+import { fetchPostJSON } from '../utils/api-helpers';
 // styles
 import styled from 'styled-components';
 import { COLORS } from '../styles/constants';
 import { AlertTriangle } from 'react-feather';
 
-// utils
-import { useCart } from '../utils/cartState';
 
 function Checkout() {
   const [status, setStatus] = useState('idle')
-  const { redirectToCheckout, cartCount } = useShoppingCart()
+  const { redirectToCheckout, cartCount } = useShoppingCart();
+  const [loading, setLoading] = useState(false);
+  const [cartEmpty, setCartEmpty] = useState(true);
 
-   // close cart hook from cartState (in lib)
-  const { closeCart } = useCart();
+  useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 
-    async function handleClick(event) {
-    event.preventDefault()
-    if (cartCount > 0) {
-      setStatus('idle');
-      const error = await redirectToCheckout();
-      if (error) {
-        setStatus('redirect-error');
-        console.log(result.error.message);
-      }
-    } else {
-      setStatus('missing-items');
+  async function handleCheckout(event) {
+    event.preventDefault();
+    setLoading(true);
+
+    const response = await fetchPostJSON('/api/checkout_sessions')
+
+    if (response.statusCode === 500) {
+      console.error(response.message)
+      return
     }
-  }
 
+    // Redirect to Checkout.
+    const stripe = await getStripe();
+    const { error } = await stripe.redirectToCheckout({
+      // Make the id field from the Checkout Session creation API response
+      // available to this file, so you can provide it as parameter here
+      sessionId: response.id,
+    })
+    // If `redirectToCheckout` fails due to a browser or network
+    // error, display the localized error message to your customer
+    // using `error.message`.
+    console.warn(error.message)
+    setLoading(false)
+  }
 
   return (
     <CheckoutFormStyles>
@@ -59,7 +69,7 @@ function Checkout() {
           </>
         )}
       </div>
-      <SickButton  onClick={handleClick}>Pay Now</SickButton>
+      <SickButton  onClick={handleCheckout} disabled={cartEmpty || loading}>Pay Now</SickButton>
     </CheckoutFormStyles>
   );
 }
@@ -88,7 +98,6 @@ const SickButton = styled.button`
   transform: skew(-2deg);
   display: inline-block;
   transition: all 0.5s;
-  cursor:pointer;
   &[disabled] {
     opacity: 0.5;
   }

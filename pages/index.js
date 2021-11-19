@@ -1,10 +1,7 @@
-import { useEffect, useState } from 'react';
 // next imports
 import Head from 'next/head';
-// import Image from 'next/image';
-
 // lib
-import { useShoppingCart } from 'use-shopping-cart'
+import { useShoppingCart } from 'use-shopping-cart';
 
 // components
 import Layout from '../components/Layout';
@@ -15,25 +12,23 @@ import Cart from '../components/Cart';
 
 
 export default function Home() {
+  const {cartCount} = useShoppingCart();
     // !! Commented because i now use use-shopping-cart pkg but i struggled to get that working so i keep it for historical purpose
   // set cart state here to be passed down to various component (CartCount, Cart && AddToCart)
-  const [cartItems, setCartItems] = useState([]);
+  // const [cartItems, setCartItems] = useState([]);
+  // useEffect(() => {
+  //   // retrieve cartItems from localStorage and put in state if items in storage
+  //   // const cartData = JSON.parse(localStorage.getItem('cartItems'));
+  //   // loadCart(cartData);
+  //   // if (cartData) {
+  //   //   setCartItems(cartData);
+  //   // }
+  // }, []);
 
-  const { loadCart } = useShoppingCart();
-
-  useEffect(() => {
-    // retrieve cartItems from localStorage and put in state if items in storage
-    // const cartData = JSON.parse(localStorage.getItem('cartItems'));
-    // loadCart(cartData);
-    // if (cartData) {
-    //   setCartItems(cartData);
-    // }
-  }, []);
-
-  // we set cartItems in local storage to persist data and to use this info in CartCount
-  useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  }, [cartItems]);
+  // // we set cartItems in local storage to persist data and to use this info in CartCount
+  // useEffect(() => {
+  //   localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  // }, [cartItems]);
 
 
   // const addToCart = (product) => {
@@ -77,7 +72,7 @@ export default function Home() {
           <meta name="description" content="Give me the Money Website" />
           <link rel="icon" href="/favicon.ico" />;
         </Head>
-        <Nav count={cartItems.length} />
+        <Nav count={cartCount} />
         <main>
           <Cart />
           <Hero />

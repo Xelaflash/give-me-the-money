@@ -1,38 +1,28 @@
 // Styles import
 import styled from 'styled-components';
 import { COLORS, WEIGHTS } from '../styles/constants';
-
 // Utils imports
 import { useCart } from '../utils/cartState';
-import formatMoney from '../utils/formatMoney';
-import calcTotalCartPrice from '../utils/calcTotalCartPrice';
-
+// libs
 import { useShoppingCart } from 'use-shopping-cart'
-
 //  Component
 import CartItem from './CartItem';
 import { Checkout } from "./Checkout";
 
 
 export default function Cart() {
-  const { loadCart } = useShoppingCart()
   const { cartOpen, closeCart } = useCart();
   const {
     cartCount,
     clearCart,
     cartDetails,
-    redirectToCheckout,
-  } = useShoppingCart()
-
-  console.log(cartDetails);
+    formattedTotalPrice
+  } = useShoppingCart();
 
   const cartItems = Object.values(cartDetails);
-  console.log(cartItems);
 
   return (
-
       <CartStyles open={cartOpen}>
-        
         <header>
           <Supreme>Your Cart</Supreme>
           <CloseButton type="button" onClick={closeCart} id="close-cart">
@@ -45,9 +35,16 @@ export default function Cart() {
           ))}
         </ul>
           {(cartCount === 0) ? <Filler><span>No products in cart...(yet 😇)</span></Filler> : null}
+          {(cartCount !== 0) ? 
+            <ClearCartBtn 
+              type="button" 
+              onClick={clearCart}> 
+              Clear Cart
+            </ClearCartBtn> 
+            : null}
         <footer>
           <p>
-            {/* TOTAL: <span>{formatMoney(calcTotalCartPrice(cartItems))}</span> */}
+            TOTAL: <span>{formattedTotalPrice}</span>
           </p>
           <Checkout />
         </footer>
@@ -104,7 +101,7 @@ const CartStyles = styled.div`
   }
   footer {
     border-top: 10px double ${COLORS.primary};
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding: 2rem 2rem 0 2rem;
     font-size: 2.2rem;
     font-weight: 900;
@@ -130,4 +127,15 @@ const CloseButton = styled.button`
   top: -2px;
   padding: 4px 12px;
   line-height: 1;
+`;
+
+const ClearCartBtn = styled.button`
+  background: ${COLORS.primary};
+  color: ${COLORS.white};
+  font-size: 1rem;
+  padding: 4px 12px;
+  font-weight: ${WEIGHTS.normal};
+  border: none;
+  box-shadow: 3px 2px 2px 0px rgba(38, 120, 95, 0.7);
+  margin:10px auto;
 `;

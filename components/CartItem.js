@@ -1,12 +1,12 @@
 // nextJS
 import Image from 'next/image';
+// libs
+import { useShoppingCart } from 'use-shopping-cart'
+import formatMoney from '../utils/formatMoney';
 // styles
 import styled from 'styled-components';
 import { Trash2 } from 'react-feather';
 import { COLORS, WEIGHTS } from '../styles/constants';
-// utils
-import { useCart } from '../utils/cartState';
-import formatMoney from '../utils/formatMoney';
 
 // stuff taken from NextJs docs for placeHolder color on Image
 // Pixel GIF code adapted from https://stackoverflow.com/a/33919020/266535
@@ -23,8 +23,7 @@ const rgbDataURL = (r, g, b) =>
   }/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==`;
 
 export default function CartItem({ cartItem }) {
-  const { closeCart } = useCart();
-  console.log(cartItem);
+  const { removeItem } = useShoppingCart();
 
   return (
     <CartItemStyles>
@@ -52,9 +51,7 @@ export default function CartItem({ cartItem }) {
       <RemoveBtn
         type="button"
         title="Remove item from Cart"
-        onClick={() => {
-          alert('todo');
-        }}
+        onClick={() => removeItem(cartItem.id)}
       >
         <Trash2 color={`${COLORS.veryPaleGreen}`} />
       </RemoveBtn>
@@ -71,10 +68,7 @@ const CartItemStyles = styled.li`
   .img-wrapper {
     box-sizing: content-box;
     line-height: 0;
-  }
-  /* the magic happens here */
-  .img-wrapper {
-    box-shadow: 0px 1px 8px 2px hsl(162 52% 31% / 0.8);
+    box-shadow: 1px 2px 8px 1px hsl(162 52% 31% / 0.8);
   }
 `;
 
