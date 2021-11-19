@@ -6,11 +6,11 @@ import styled from 'styled-components';
 import PRODUCT_DATA from '../data/products.js';
 import ProductList from './ProductList';
 
-export default function Products({ addToCart }) {
+export default function Products() {
   const [products] = useState(PRODUCT_DATA);
   return (
     <ProductsWrapper>
-      <ProductList products={products} addToCart={addToCart} />
+      <ProductList products={products} />
     </ProductsWrapper>
   );
 }

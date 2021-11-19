@@ -4,7 +4,7 @@ const PRODUCT_DATA = [
     title: 'Light',
     description: 'Light Price for people to give the Money',
     image: '/images/1$.jpeg',
-    price: 1,
+    price: 100,
     quantity: 1,
   },
   {
@@ -12,7 +12,7 @@ const PRODUCT_DATA = [
     title: 'Professional',
     description: 'Only for Professional Give the Money people',
     image: '/images/10$.jpeg',
-    price: 10,
+    price: 1000,
     quantity: 1,
   },
   {
@@ -20,7 +20,7 @@ const PRODUCT_DATA = [
     title: 'Premium VIP',
     description: 'Giving the Money VIP people',
     image: '/images/100$.jpg',
-    price: 100,
+    price: 10000,
     quantity: 1,
   },
 ];

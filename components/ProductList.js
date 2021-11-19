@@ -7,11 +7,14 @@ import { COLORS, WEIGHTS } from '../styles/constants';
 import formatMoney from '../utils/formatMoney';
 import { useCart } from '../utils/cartState';
 
+// libs 
+import { useShoppingCart } from 'use-shopping-cart';
+
 // svg bg
 import SvgBackground from './SvgBackground';
 import SvgBgPrimaryCard from './SvgBgPrimaryCard';
 
-export default function ProductList({ products, addToCart }) {
+export default function ProductList({ products }) {
   const { openCart, cartOpen } = useCart();
 
   // Svg background
@@ -20,6 +23,8 @@ export default function ProductList({ products, addToCart }) {
 
   const svgString2 = encodeURIComponent(renderToStaticMarkup(<SvgBgPrimaryCard />));
   const dataUri2 = `url("data:image/svg+xml,${svgString2}")`;
+
+    const { addItem } = useShoppingCart();
 
   return (
     <ProductsList>
@@ -38,7 +43,7 @@ export default function ProductList({ products, addToCart }) {
           <button
             type="button"
             onClick={() => {
-              addToCart({ product });
+              addItem(product);
               !cartOpen ? 
                 setTimeout(() => {openCart();}, 1000)
               : null;

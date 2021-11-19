@@ -1,11 +1,10 @@
-import getStripe from '../utils/get-stripejs';
+const stripe = require('stripe')(process.env.STRIPE_API_SECRET)
 const validateCartItems = require('use-shopping-cart/utilities')
   .validateCartItems
 
 const inventory = require('./data/products_data.json')
 
 exports.handler = async (event) => {
-  const stripe = await getStripe();
   let product
   try {
     product = JSON.parse(event.body)

@@ -1,6 +1,5 @@
 import GlobalStyles from '../styles/GlobalStyles';
 import { CartStateProvider } from '../utils/cartState';
-import getStripe from '../utils/get-stripe';
 
 // libs
 import { CartProvider } from 'use-shopping-cart'
@@ -9,11 +8,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <CartProvider
       mode="payment"
-      cartMode="client-only"
-      stripe={getStripe()}
-      currency='usd'
-      successUrl="/"
-      cancelUrl="/"
+      cartMode="checkout-session"
+      stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
+      //!! to change
+      successUrl="https://localhost:3000"
+      cancelUrl="https://localhost:3000"
       currency="USD"
       allowedCountries={['US', 'GB', 'CA', 'FR']}
       billingAddressCollection={true}

@@ -3,9 +3,8 @@ import { useEffect, useState } from 'react';
 import Head from 'next/head';
 // import Image from 'next/image';
 
-// styles imports
-// import styled from 'styled-components';
-// import { COLORS, WEIGHTS } from '../styles/constants';
+// lib
+import { useShoppingCart } from 'use-shopping-cart'
 
 // components
 import Layout from '../components/Layout';
@@ -14,16 +13,21 @@ import Hero from '../components/Hero';
 import Products from '../components/Products';
 import Cart from '../components/Cart';
 
+
 export default function Home() {
+    // !! Commented because i now use use-shopping-cart pkg but i struggled to get that working so i keep it for historical purpose
   // set cart state here to be passed down to various component (CartCount, Cart && AddToCart)
   const [cartItems, setCartItems] = useState([]);
 
+  const { loadCart } = useShoppingCart();
+
   useEffect(() => {
     // retrieve cartItems from localStorage and put in state if items in storage
-    const savedCartItems = JSON.parse(localStorage.getItem('cartItems'));
-    if (savedCartItems) {
-      setCartItems(savedCartItems);
-    }
+    // const cartData = JSON.parse(localStorage.getItem('cartItems'));
+    // loadCart(cartData);
+    // if (cartData) {
+    //   setCartItems(cartData);
+    // }
   }, []);
 
   // we set cartItems in local storage to persist data and to use this info in CartCount
@@ -31,39 +35,39 @@ export default function Home() {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // !! TODO: Maybe some refacto to find for Add to cart
-  const addToCart = (product) => {
-    // will give an array of products (ids) in cart
-    const IdOfItemInCart = cartItems.map((cartItem) => cartItem.product.id);
-    // check if product.product.id present in IdOfItemInCart array
-    // will return a bool
-    const ProductAlreadyInCart = IdOfItemInCart.includes(product.product.id);
-    // if false update qty
-    if (ProductAlreadyInCart) {
-      // 1.shallow copy of  array of items in state
-      const cartItemsCopy = [...cartItems];
-      // 1.1  find index of item to mutate
-      const index = cartItemsCopy.findIndex((item) => item.product.id === product.product.id);
-      //  2. copy of cartItem object to mutate
-      const itemToMutateCopy = { ...cartItemsCopy[index] };
-      //  update qty
-      itemToMutateCopy.product.quantity += 1;
-      // put back new updated object in Array of items
-      cartItemsCopy[index] = itemToMutateCopy;
-      // set the state to the new copy
-      setCartItems(cartItemsCopy);
-    } else {
-      // if true add item to cart
-      setCartItems((oldCart) => [...oldCart, product]);
-    }
-  };
 
-  const removeFromCart = (id) => {
-    // find the Index of cartItem object to trash
-    const ItemTodeleteIndex = cartItems.findIndex((ItemToDelete) => ItemToDelete.product.id === id);
-    // setNew CartItems state
-    setCartItems((oldCart) => [...oldCart.slice(0, ItemTodeleteIndex), ...oldCart.slice(ItemTodeleteIndex + 1)]);
-  };
+  // const addToCart = (product) => {
+  //   // will give an array of products (ids) in cart
+  //   const IdOfItemInCart = cartItems.map((cartItem) => cartItem.product.id);
+  //   // check if product.product.id present in IdOfItemInCart array
+  //   // will return a bool
+  //   const ProductAlreadyInCart = IdOfItemInCart.includes(product.product.id);
+  //   // if false update qty
+  //   if (ProductAlreadyInCart) {
+  //     // 1.shallow copy of  array of items in state
+  //     const cartItemsCopy = [...cartItems];
+  //     // 1.1  find index of item to mutate
+  //     const index = cartItemsCopy.findIndex((item) => item.product.id === product.product.id);
+  //     //  2. copy of cartItem object to mutate
+  //     const itemToMutateCopy = { ...cartItemsCopy[index] };
+  //     //  update qty
+  //     itemToMutateCopy.product.quantity += 1;
+  //     // put back new updated object in Array of items
+  //     cartItemsCopy[index] = itemToMutateCopy;
+  //     // set the state to the new copy
+  //     setCartItems(cartItemsCopy);
+  //   } else {
+  //     // if true add item to cart
+  //     setCartItems((oldCart) => [...oldCart, product]);
+  //   }
+  // };
+
+  // const removeFromCart = (id) => {
+  //   // find the Index of cartItem object to trash
+  //   const ItemTodeleteIndex = cartItems.findIndex((ItemToDelete) => ItemToDelete.product.id === id);
+  //   // setNew CartItems state
+  //   setCartItems((oldCart) => [...oldCart.slice(0, ItemTodeleteIndex), ...oldCart.slice(ItemTodeleteIndex + 1)]);
+  // };
 
   return (
     <Layout>
@@ -75,9 +79,9 @@ export default function Home() {
         </Head>
         <Nav count={cartItems.length} />
         <main>
-          <Cart cartItems={cartItems} removeFromCart={removeFromCart} />
+          <Cart />
           <Hero />
-          <Products addToCart={addToCart} />
+          <Products />
         </main>
       </div>
     </Layout>

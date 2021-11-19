@@ -7,16 +7,32 @@ import { useCart } from '../utils/cartState';
 import formatMoney from '../utils/formatMoney';
 import calcTotalCartPrice from '../utils/calcTotalCartPrice';
 
+import { useShoppingCart } from 'use-shopping-cart'
+
 //  Component
 import CartItem from './CartItem';
 import { Checkout } from "./Checkout";
 
 
-export default function Cart({ cartItems, removeFromCart }) {
+export default function Cart() {
+  const { loadCart } = useShoppingCart()
   const { cartOpen, closeCart } = useCart();
+  const {
+    cartCount,
+    clearCart,
+    cartDetails,
+    redirectToCheckout,
+  } = useShoppingCart()
+
+  console.log(cartDetails);
+
+  const cartItems = Object.values(cartDetails);
+  console.log(cartItems);
+
   return (
 
       <CartStyles open={cartOpen}>
+        
         <header>
           <Supreme>Your Cart</Supreme>
           <CloseButton type="button" onClick={closeCart} id="close-cart">
@@ -25,13 +41,13 @@ export default function Cart({ cartItems, removeFromCart }) {
         </header>
         <ul>
           {cartItems.map((cartItem) => (
-            <CartItem key={cartItem.product.id} cartItem={cartItem} removeFromCart={removeFromCart} />
+            <CartItem key={cartItem.id} cartItem={cartItem} />
           ))}
         </ul>
-          {!cartItems.length && <Filler><span>No products in cart...(yet 😇)</span></Filler>}
+          {(cartCount === 0) ? <Filler><span>No products in cart...(yet 😇)</span></Filler> : null}
         <footer>
           <p>
-            TOTAL: <span>{formatMoney(calcTotalCartPrice(cartItems))}</span>
+            {/* TOTAL: <span>{formatMoney(calcTotalCartPrice(cartItems))}</span> */}
           </p>
           <Checkout />
         </footer>
