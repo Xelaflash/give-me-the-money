@@ -1,14 +1,7 @@
 import { useState } from 'react';
 
-// Ext libs
-// import {
-//   CardElement,
-//   Elements,
-//   useElements,
-//   useStripe,
-// } from '@stripe/react-stripe-js';
-// import { loadStripe } from '@stripe/stripe-js';
-import nProgress from 'nprogress';
+// libs
+import { useShoppingCart } from 'use-shopping-cart'
 
 // styles
 import styled from 'styled-components';
@@ -18,101 +11,56 @@ import { AlertTriangle } from 'react-feather';
 // utils
 import { useCart } from '../utils/cartState';
 
-// const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
+function Checkout() {
+  const [status, setStatus] = useState('idle')
+  const { redirectToCheckout, cartCount } = useShoppingCart()
 
-function CheckoutForm() {
-  // we need our own pice of state to show user something is currently happening
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);
-
-  // stipe styles options
-  const appearance = {
-    theme: 'stripe',
-      variables: {
-    colorPrimary: '#0570de',
-    colorBackground: '#ffffff',
-    colorText: '#30313d',
-    colorDanger: '#df1b41',
-    fontFamily: 'Ideal Sans, system-ui, sans-serif',
-    spacingUnit: '2px',
-    borderRadius: '4px',
-    // See all possible variables below
-  }
-  };
-  
-  // Hooks coming from stripe (https://stripe.com/docs/stripe-js/react)
-  // const stripe = useStripe();
-  // const elements = useElements({appearance});
-
-
-
-  // close cart hook from cartState (in lib)
+   // close cart hook from cartState (in lib)
   const { closeCart } = useCart();
 
-  async function handleSubmit(e) {
-    // stop the form from submitting and turn loader on
-    e.preventDefault();
-    setLoading(true);
-
-    // if (!stripe || !elements) {
-    //   // Stripe.js has not yet loaded.
-    //   // Make sure to disable form submission until Stripe.js has loaded.
-    //   return;
-    // }
-    // start page transition
-    nProgress.start();
-    // const result = await stripe.createPaymentMethod({
-    //   //`Elements` instance that was used to create the Payment Element
-    //   type: 'card',
-    //   card: elements.getElement(CardElement),
-    //   confirmParams: {
-    //     return_url: "/",
-    //   },
-    // });
-    // console.log(paymentMethod);
-    // handle stripe errors ()
-    if (error) {
-      setError(error);
-      nProgress.done();
-      console.log(result.error.message);
+    async function handleClick(event) {
+    event.preventDefault()
+    if (cartCount > 0) {
+      setStatus('idle');
+      const error = await redirectToCheckout();
+      if (error) {
+        setStatus('redirect-error');
+        console.log(result.error.message);
+      }
     } else {
-      alert('Payment sucessful');
-      console.log('Payment method:', paymentMethod);
-      // ... POST: /api/charge/user  
+      setStatus('missing-items');
     }
-    // close cart
-    closeCart();
-    // turn loader off
-    setLoading(false);
-    nProgress.done();
   }
 
-  return (
-    <CheckoutFormStyles onSubmit={handleSubmit}>
-      {error && (
-        <div
-          style={{
-            fontSize: 14,
-            color: 'red',
-            display: 'flex',
-            alignItems: 'center',
-          }}
-        >
-          <AlertTriangle />
-          <p>{error.message}</p>
-        </div>
-      )}
-    
-      <SickButton>Pay Now</SickButton>
-    </CheckoutFormStyles>
-  );
-}
 
-function Checkout() {
   return (
-    <form action="/create-checkout-session" method="POST">
-      <CheckoutForm />
-    </form>
+    <CheckoutFormStyles>
+      <div
+        style={{
+          fontSize: 14,
+          color: 'red',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        {status === 'missing-items' && (
+          <>
+            <AlertTriangle size={24}/>
+            <ErrorMsg>
+              Your cart is empty.
+            </ErrorMsg>
+          </>
+        )}
+        {status === 'redirect-error' && (
+          <>
+            <AlertTriangle size={24}/>
+            <ErrorMsg>Unable to redirect to Stripe checkout page.</ErrorMsg>
+          </>
+        )}
+      </div>
+      <SickButton  onClick={handleClick}>Pay Now</SickButton>
+    </CheckoutFormStyles>
   );
 }
 
@@ -124,7 +72,7 @@ const CheckoutFormStyles = styled.form`
   display: grid;
   grid-gap: 1rem;
   font-size: 2rem;
-  margin: 4rem auto;
+  margin: 2rem auto 0;
 `;
 
 const SickButton = styled.button`
@@ -144,6 +92,11 @@ const SickButton = styled.button`
   &[disabled] {
     opacity: 0.5;
   }
+`;
+
+const ErrorMsg = styled.p`
+  padding-left: 15px;
+  font-size: 1.3rem;
 `;
 
 

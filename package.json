@@ -19,7 +19,8 @@
     "react-feather": "^2.0.9",
     "react-fetch-hook": "^1.8.5",
     "react-transition-group": "^4.4.2",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "use-shopping-cart": "^3.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

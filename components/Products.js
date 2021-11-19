@@ -3,7 +3,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 //  Data
-import PRODUCT_DATA from '../data/products';
+import PRODUCT_DATA from '../data/products.js';
 import ProductList from './ProductList';
 
 export default function Products({ addToCart }) {

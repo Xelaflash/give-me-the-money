@@ -1,6 +1,6 @@
 // Styles import
 import styled from 'styled-components';
-import { COLORS } from '../styles/constants';
+import { COLORS, WEIGHTS } from '../styles/constants';
 
 // Utils imports
 import { useCart } from '../utils/cartState';
@@ -15,26 +15,27 @@ import { Checkout } from "./Checkout";
 export default function Cart({ cartItems, removeFromCart }) {
   const { cartOpen, closeCart } = useCart();
   return (
-    <CartStyles open={cartOpen}>
-      <header>
-        <Supreme>Your Cart</Supreme>
-        <CloseButton type="button" onClick={closeCart} id="close-cart">
-          &times;
-        </CloseButton>
-      </header>
-      <ul>
-        {cartItems.map((cartItem) => (
-          <CartItem key={cartItem.product.id} cartItem={cartItem} removeFromCart={removeFromCart} />
-        ))}
-      </ul>
-      {!cartItems.length && <span>No products in cart.</span>}
-      <footer>
-        <p>
-          TOTAL: <span>{formatMoney(calcTotalCartPrice(cartItems))}</span>
-        </p>
-        <Checkout />
-      </footer>
-    </CartStyles>
+
+      <CartStyles open={cartOpen}>
+        <header>
+          <Supreme>Your Cart</Supreme>
+          <CloseButton type="button" onClick={closeCart} id="close-cart">
+            &times;
+          </CloseButton>
+        </header>
+        <ul>
+          {cartItems.map((cartItem) => (
+            <CartItem key={cartItem.product.id} cartItem={cartItem} removeFromCart={removeFromCart} />
+          ))}
+        </ul>
+          {!cartItems.length && <Filler><span>No products in cart...(yet 😇)</span></Filler>}
+        <footer>
+          <p>
+            TOTAL: <span>{formatMoney(calcTotalCartPrice(cartItems))}</span>
+          </p>
+          <Checkout />
+        </footer>
+      </CartStyles>
   );
 }
 
@@ -46,6 +47,17 @@ const Supreme = styled.h3`
   transform: skew(-3deg);
   margin: 0;
   font-size: 2rem;
+`;
+
+const Filler = styled.div`
+  height: 10rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    font-weight: ${WEIGHTS.bold};
+    font-size: 1.2rem;
+  }
 `;
 
 const CartStyles = styled.div`
@@ -71,11 +83,14 @@ const CartStyles = styled.div`
     width: max-content;
     margin: auto;
   }
+  ul {
+    margin-top:1.5rem;
+  }
   footer {
     border-top: 10px double ${COLORS.primary};
     margin-top: 2rem;
-    padding: 2rem;
-    font-size: 2.5rem;
+    padding: 2rem 2rem 0 2rem;
+    font-size: 2.2rem;
     font-weight: 900;
     p {
       display: flex;
