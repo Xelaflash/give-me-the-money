@@ -2,8 +2,7 @@ import { useEffect, useState } from 'react';
 // libs
 import { useShoppingCart } from 'use-shopping-cart'
 // utils
-// import getStripe from '../utils/get-stripe';
-// import { fetchPostJSON } from '../utils/api-helpers';
+
 // styles
 import styled from 'styled-components';
 import { COLORS } from '../styles/constants';
@@ -30,9 +29,13 @@ function Checkout() {
     event.preventDefault();
     form.submit();
   }
-
   return (
     <CheckoutFormStyles action='/api/redirect-to-checkout' method='POST'>
+      <input
+        type='hidden'
+        name='cartDetails'
+        value={JSON.stringify(cartDetails)}
+      />
       <div
         style={{
           fontSize: 14,
@@ -57,7 +60,7 @@ function Checkout() {
           </>
         )}
       </div>
-      <SickButton  onClick={handleCheckout} disabled={cartEmpty || loading}>Pay Now</SickButton>
+      <SickButton type='submit' onClick={handleCheckout} disabled={cartEmpty || loading}>Pay Now</SickButton>
     </CheckoutFormStyles>
   );
 }
