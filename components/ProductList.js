@@ -33,7 +33,7 @@ export default function ProductList({ products }) {
               '--dataUriPrimaryCard': dataUri2,
             }}
           >
-            <h3>{product.title}</h3>
+            <h3>{product.name}</h3>
             <p>{formatMoney(product.price)}</p>
             <p id="description">{product.description}</p>
             <button

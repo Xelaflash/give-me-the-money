@@ -1,7 +1,7 @@
 const PRODUCT_DATA = [
   {
     id: 'prod_KUd6AhZmT9CKgQ',
-    title: 'Light',
+    name: 'Light',
     description: 'Light Price for people to give the Money',
     image: '/images/1$.jpeg',
     price: 100,
@@ -10,7 +10,7 @@ const PRODUCT_DATA = [
   },
   {
     id: 'prod_KUdDV9FzlWGNxo',
-    title: 'Professional',
+    name: 'Professional',
     description: 'Only for Professional Give the Money people',
     image: '/images/10$.jpeg',
     price: 1000,
@@ -19,7 +19,7 @@ const PRODUCT_DATA = [
   },
   {
     id: 'prod_KUdEMM6Lc5NfQT',
-    title: 'Premium VIP',
+    name: 'Premium VIP',
     description: 'Giving the Money VIP people',
     image: '/images/100$.jpg',
     price: 10000,

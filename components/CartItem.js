@@ -34,13 +34,13 @@ export default function CartItem({ cartItem }) {
           src={cartItem.image}
           placeholder="blur"
           blurDataURL={rgbDataURL(237, 181, 6)}
-          alt={cartItem.title}
+          alt={cartItem.name}
           className="item_img"
         />
       </div>
       <ProductPriceWrapper>
         <div className="title-Wrapper">
-          <h3 className="title">{cartItem.title}</h3>
+          <h3 className="title">{cartItem.name}</h3>
           <p className="qty">
             {' '}
             ({formatMoney(cartItem.price)} &times; {cartItem.quantity})

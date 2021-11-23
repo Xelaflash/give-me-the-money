@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 // libs
 import { useShoppingCart } from 'use-shopping-cart'
 // utils
-import getStripe from '../utils/get-stripe';
-import { fetchPostJSON } from '../utils/api-helpers';
+// import getStripe from '../utils/get-stripe';
+// import { fetchPostJSON } from '../utils/api-helpers';
 // styles
 import styled from 'styled-components';
 import { COLORS } from '../styles/constants';
@@ -12,39 +12,28 @@ import { AlertTriangle } from 'react-feather';
 
 function Checkout() {
   const [status, setStatus] = useState('idle')
-  const { redirectToCheckout, cartCount } = useShoppingCart();
+  const { cartCount, cartDetails } = useShoppingCart();
   const [loading, setLoading] = useState(false);
   const [cartEmpty, setCartEmpty] = useState(true);
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 
+  useEffect(() => {
+    if (cartDetails == null || cartDetails.length === 0) {
+        cartDetails = { cartDetails: [] };
+    }
+  }, []);
+
+  const form = document.querySelector('form');
+  console.log(form);
+
   async function handleCheckout(event) {
     event.preventDefault();
-    setLoading(true);
-
-    const response = await fetchPostJSON('/api/checkout_sessions')
-
-    if (response.statusCode === 500) {
-      console.error(response.message)
-      return
-    }
-
-    // Redirect to Checkout.
-    const stripe = await getStripe();
-    const { error } = await stripe.redirectToCheckout({
-      // Make the id field from the Checkout Session creation API response
-      // available to this file, so you can provide it as parameter here
-      sessionId: response.id,
-    })
-    // If `redirectToCheckout` fails due to a browser or network
-    // error, display the localized error message to your customer
-    // using `error.message`.
-    console.warn(error.message)
-    setLoading(false)
+    form.submit();
   }
 
   return (
-    <CheckoutFormStyles>
+    <CheckoutFormStyles action='/api/redirect-to-checkout' method='POST'>
       <div
         style={{
           fontSize: 14,
