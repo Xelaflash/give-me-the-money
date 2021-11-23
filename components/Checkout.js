@@ -25,7 +25,6 @@ function Checkout() {
   }, []);
 
   const form = document.querySelector('form');
-  console.log(form);
 
   async function handleCheckout(event) {
     event.preventDefault();
