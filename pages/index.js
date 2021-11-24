@@ -2,7 +2,6 @@
 import Head from 'next/head';
 // lib
 import { useShoppingCart } from 'use-shopping-cart';
-
 // components
 import Layout from '../components/Layout';
 import Nav from '../components/Nav';
@@ -10,10 +9,9 @@ import Hero from '../components/Hero';
 import Products from '../components/Products';
 import Cart from '../components/Cart';
 
-
 export default function Home() {
-  const {cartCount} = useShoppingCart();
-    // !! Commented because i now use use-shopping-cart pkg but i struggled to get that working so i keep it for historical purpose
+  const { cartCount } = useShoppingCart();
+  // !! Commented because i now use use-shopping-cart pkg but i struggled to get that working so i keep it for historical purpose
   // set cart state here to be passed down to various component (CartCount, Cart && AddToCart)
   // const [cartItems, setCartItems] = useState([]);
   // useEffect(() => {
@@ -29,7 +27,6 @@ export default function Home() {
   // useEffect(() => {
   //   localStorage.setItem('cartItems', JSON.stringify(cartItems));
   // }, [cartItems]);
-
 
   // const addToCart = (product) => {
   //   // will give an array of products (ids) in cart

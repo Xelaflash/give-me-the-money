@@ -1,12 +1,13 @@
 // nextJS
 import Image from 'next/image';
 // libs
-import { useShoppingCart } from 'use-shopping-cart'
-import formatMoney from '../utils/formatMoney';
+import { useShoppingCart } from 'use-shopping-cart';
 // styles
 import styled from 'styled-components';
 import { Trash2 } from 'react-feather';
 import { COLORS, WEIGHTS } from '../styles/constants';
+// utils
+import formatMoney from '../utils/formatMoney';
 
 // stuff taken from NextJs docs for placeHolder color on Image
 // Pixel GIF code adapted from https://stackoverflow.com/a/33919020/266535
@@ -48,11 +49,7 @@ export default function CartItem({ cartItem }) {
         </div>
         <h3 className="price">{formatMoney(cartItem.price * cartItem.quantity)}</h3>
       </ProductPriceWrapper>
-      <RemoveBtn
-        type="button"
-        title="Remove item from Cart"
-        onClick={() => removeItem(cartItem.id)}
-      >
+      <RemoveBtn type="button" title="Remove item from Cart" onClick={() => removeItem(cartItem.id)}>
         <Trash2 color={`${COLORS.veryPaleGreen}`} />
       </RemoveBtn>
     </CartItemStyles>

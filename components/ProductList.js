@@ -1,3 +1,5 @@
+// libs
+import { useShoppingCart } from 'use-shopping-cart';
 // styles imports
 import styled from 'styled-components';
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -5,8 +7,6 @@ import { COLORS, WEIGHTS } from '../styles/constants';
 // utils
 import { useCart } from '../utils/cartState';
 import formatMoney from '../utils/formatMoney';
-// libs 
-import { useShoppingCart } from 'use-shopping-cart';
 // svg bg
 import SvgBackground from './SvgBackground';
 import SvgBgPrimaryCard from './SvgBgPrimaryCard';
@@ -25,29 +25,31 @@ export default function ProductList({ products }) {
   return (
     <ProductsList>
       {products.map((product) => (
-          <li
-            className="card"
-            key={product.id}
-            style={{
-              '--dataUri': dataUri,
-              '--dataUriPrimaryCard': dataUri2,
+        <li
+          className="card"
+          key={product.id}
+          style={{
+            '--dataUri': dataUri,
+            '--dataUriPrimaryCard': dataUri2,
+          }}
+        >
+          <h3>{product.name}</h3>
+          <p>{formatMoney(product.price)}</p>
+          <p id="description">{product.description}</p>
+          <button
+            type="button"
+            onClick={() => {
+              addItem(product);
+              !cartOpen
+                ? setTimeout(() => {
+                    openCart();
+                  }, 1500)
+                : null;
             }}
           >
-            <h3>{product.name}</h3>
-            <p>{formatMoney(product.price)}</p>
-            <p id="description">{product.description}</p>
-            <button
-              type="button"
-              onClick={() => {
-                addItem(product);
-                !cartOpen ? 
-                  setTimeout(() => {openCart();}, 1500)
-                : null;
-              }}
-            >
-              Give Now
-            </button>
-          </li>
+            Give Now
+          </button>
+        </li>
       ))}
     </ProductsList>
   );

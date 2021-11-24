@@ -1,17 +1,10 @@
 // styles imports
-import styled from 'styled-components';
-import { COLORS, WEIGHTS } from '../styles/constants';
+import { COLORS } from '../styles/constants';
 
 export default function SvgBgPrimaryCard() {
   return (
-    <svg
-      viewBox="0 0 350 498"
-      width="350"
-      height="498"
-      xmlns="http://www.w3.org/2000/svg"
-      version="1.1"
-    >
-      <rect x="0" y="0" width="350" height="498" fill={COLORS.white}></rect>
+    <svg viewBox="0 0 350 498" width="350" height="498" xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <rect x="0" y="0" width="350" height="498" fill={COLORS.white} />
       <defs>
         <linearGradient id="gradient">
           <stop offset="1%" stopColor="hsl(223, 74%, 7%)" />
@@ -24,7 +17,7 @@ export default function SvgBgPrimaryCard() {
         fill="url(#gradient)"
         strokeLinecap="round"
         strokeLinejoin="miter"
-      ></path>
+      />
     </svg>
   );
 }

@@ -1,72 +1,70 @@
 import { useRef, useEffect } from 'react';
+// libs
+import { useShoppingCart } from 'use-shopping-cart';
 // Styles import
 import styled from 'styled-components';
 import { COLORS, WEIGHTS } from '../styles/constants';
 // Utils imports
 import { useCart } from '../utils/cartState';
-// libs
-import { useShoppingCart } from 'use-shopping-cart'
 //  Component
 import CartItem from './CartItem';
-import { Checkout } from "./Checkout";
+import { Checkout } from './Checkout';
 
 export default function Cart() {
   const { cartOpen, closeCart } = useCart();
-  const {
-    cartCount,
-    clearCart,
-    cartDetails,
-    formattedTotalPrice
-  } = useShoppingCart();
+  const { cartCount, clearCart, cartDetails, formattedTotalPrice } = useShoppingCart();
 
   const ref = useRef();
-  console.log(cartOpen);
+
+  // TODO: fix bug => closing cart when clicking trash btn or clickCart
 
   useEffect(() => {
-    const checkIfClickedOutside = e => {
+    const checkIfClickedOutside = (e) => {
       // If the cart is open and the clicked target is not within the cart,
       // then close the cart
       if (cartOpen && ref.current && !ref.current.contains(e.target)) {
         closeCart();
       }
-    }
-    document.addEventListener("click", checkIfClickedOutside)
+    };
+    document.addEventListener('click', checkIfClickedOutside);
     return () => {
       // Cleanup the event listener
-      document.removeEventListener("click", checkIfClickedOutside)
-    }
-  }, [cartOpen])
+      document.removeEventListener('click', checkIfClickedOutside);
+    };
+  }, [cartOpen, closeCart]);
 
   const cartItems = Object.values(cartDetails);
 
   return (
-      <CartStyles open={cartOpen} ref={ref}>
-        <header>
-          <Supreme>Your Cart</Supreme>
-          <CloseButton type="button" onClick={closeCart} id="close-cart">
-            &times;
-          </CloseButton>
-        </header>
-        <ul>
-          {cartItems.map((cartItem) => (
-            <CartItem key={cartItem.id} cartItem={cartItem} />
-          ))}
-        </ul>
-          {(cartCount === 0) ? <Filler><span>No products in cart...(yet 😇)</span></Filler> : null}
-          {(cartCount !== 0) ? 
-            <ClearCartBtn 
-              type="button" 
-              onClick={clearCart}> 
-              Clear Cart
-            </ClearCartBtn> 
-            : null}
-        <footer>
-          <p>
-            TOTAL: <span>{formattedTotalPrice}</span>
-          </p>
-          <Checkout />
-        </footer>
-      </CartStyles>
+    <CartStyles open={cartOpen} ref={ref}>
+      <header>
+        <Supreme>Your Cart</Supreme>
+        <CloseButton type="button" onClick={closeCart} id="close-cart">
+          &times;
+        </CloseButton>
+      </header>
+      <ul>
+        {cartItems.map((cartItem) => (
+          <CartItem key={cartItem.id} cartItem={cartItem} />
+        ))}
+      </ul>
+      {cartCount === 0 ? (
+        <Filler>
+          <span>No products in cart...(yet 😇)</span>
+        </Filler>
+      ) : null}
+      {cartCount !== 0 ? (
+        <ClearCartBtn type="button" onClick={clearCart}>
+          Clear Cart
+        </ClearCartBtn>
+      ) : null}
+      <footer>
+        <p>
+          TOTAL: <span>{formattedTotalPrice}</span>
+        </p>
+        <Checkout />
+      </footer>
+    </CartStyles>
   );
 }
 
@@ -82,7 +80,7 @@ const Supreme = styled.h3`
 
 const Filler = styled.div`
   height: 10rem;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   span {
@@ -115,7 +113,7 @@ const CartStyles = styled.div`
     margin: auto;
   }
   ul {
-    margin-top:1.5rem;
+    margin-top: 1.5rem;
   }
   footer {
     border-top: 10px double ${COLORS.primary};
@@ -155,5 +153,5 @@ const ClearCartBtn = styled.button`
   font-weight: ${WEIGHTS.normal};
   border: none;
   box-shadow: 3px 2px 2px 0px rgba(38, 120, 95, 0.7);
-  margin:10px auto;
+  margin: 10px auto;
 `;

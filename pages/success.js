@@ -2,9 +2,8 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 // libs
 import { useShoppingCart } from 'use-shopping-cart';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { DollarSign } from 'react-feather';
 // styles
 import styled from 'styled-components';
 import { COLORS, WEIGHTS } from '../styles/constants';
@@ -13,23 +12,24 @@ import Layout from '../components/Layout';
 import Nav from '../components/Nav';
 import Cart from '../components/Cart';
 
-export default function success() {
+export default function Success() {
   const MySwal = withReactContent(Swal);
-  const {cartCount, clearCart} = useShoppingCart();
+  const { cartCount, clearCart } = useShoppingCart();
 
   useEffect(() => {
     MySwal.fire({
-    title: <strong>Payment Successful!</strong>,
-    html: <i>Thanks for the support</i>,
-    icon: 'success'
-    })
-  }
-  , []);
+      title: <strong>Payment Successful!</strong>,
+      html: <i>Thanks for the support</i>,
+      icon: 'success',
+    });
+  }, [MySwal]);
   useEffect(() =>
-    setTimeout(() => {clearCart()}, 1000)
+    setTimeout(() => {
+      clearCart();
+    }, 1000)
   );
 
-  return(
+  return (
     <Layout>
       <Nav count={cartCount} />
       <Cart />
@@ -43,9 +43,8 @@ export default function success() {
           <ReturnToHome>Home</ReturnToHome>
         </Link>
       </SuccessPageWrapper>
-
     </Layout>
-  )
+  );
 }
 
 const SuccessPageWrapper = styled.div`
@@ -56,13 +55,13 @@ const SuccessPageWrapper = styled.div`
 
   p {
     text-align: center;
-    line-height:2;
-    font-size:1.2rem;
+    line-height: 2;
+    font-size: 1.2rem;
   }
 `;
 
 const ThanksMsg = styled.h1`
-  font-size: clamp(1.5rem, 4vw + 1rem, 2.8rem );
+  font-size: clamp(1.5rem, 4vw + 1rem, 2.8rem);
   font-weight: ${WEIGHTS.bold};
   margin: 5rem auto 2rem;
   & span {

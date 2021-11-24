@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 // libs
-import { useShoppingCart } from 'use-shopping-cart'
+import { useShoppingCart } from 'use-shopping-cart';
 // utils
 
 // styles
@@ -17,7 +17,7 @@ function Checkout() {
 
   useEffect(() => {
     if (cartDetails == null || cartDetails.length === 0) {
-        cartDetails = { cartDetails: [] };
+      cartDetails = { cartDetails: [] };
     }
   }, []);
 
@@ -27,14 +27,13 @@ function Checkout() {
     event.preventDefault();
     form.submit();
   }
+
   return (
-    <CheckoutFormStyles action='/api/redirect-to-checkout' method='POST'>
-      <input
-        type='hidden'
-        name='cartDetails'
-        value={JSON.stringify(cartDetails)}
-      />
-      <SickButton type='submit' onClick={handleCheckout} disabled={cartEmpty || loading}>Pay Now</SickButton>
+    <CheckoutFormStyles action="/api/redirect-to-checkout" method="POST">
+      <input type="hidden" name="cartDetails" value={JSON.stringify(cartDetails)} />
+      <SickButton type="submit" onClick={handleCheckout} disabled={cartEmpty || loading}>
+        Pay Now
+      </SickButton>
     </CheckoutFormStyles>
   );
 }
@@ -67,13 +66,5 @@ const SickButton = styled.button`
     opacity: 0.5;
   }
 `;
-
-const ErrorMsg = styled.p`
-  padding-left: 15px;
-  font-size: 1.3rem;
-`;
-
-
-
 
 export { Checkout };
