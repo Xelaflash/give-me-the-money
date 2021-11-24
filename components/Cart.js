@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react';
 // Styles import
 import styled from 'styled-components';
 import { COLORS, WEIGHTS } from '../styles/constants';
@@ -9,7 +10,6 @@ import { useShoppingCart } from 'use-shopping-cart'
 import CartItem from './CartItem';
 import { Checkout } from "./Checkout";
 
-
 export default function Cart() {
   const { cartOpen, closeCart } = useCart();
   const {
@@ -19,10 +19,28 @@ export default function Cart() {
     formattedTotalPrice
   } = useShoppingCart();
 
+  const ref = useRef();
+  console.log(cartOpen);
+
+  useEffect(() => {
+    const checkIfClickedOutside = e => {
+      // If the cart is open and the clicked target is not within the cart,
+      // then close the cart
+      if (cartOpen && ref.current && !ref.current.contains(e.target)) {
+        closeCart();
+      }
+    }
+    document.addEventListener("click", checkIfClickedOutside)
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("click", checkIfClickedOutside)
+    }
+  }, [cartOpen])
+
   const cartItems = Object.values(cartDetails);
 
   return (
-      <CartStyles open={cartOpen}>
+      <CartStyles open={cartOpen} ref={ref}>
         <header>
           <Supreme>Your Cart</Supreme>
           <CloseButton type="button" onClick={closeCart} id="close-cart">
