@@ -19,9 +19,11 @@
     "react-feather": "^2.0.9",
     "react-fetch-hook": "^1.8.5",
     "react-transition-group": "^4.4.2",
+    "stripe": "8.56.0",
     "styled-components": "^5.3.3",
-    "use-shopping-cart": "^3.0.3",
-    "stripe": "8.56.0"
+    "sweetalert2": "^11.2.0",
+    "sweetalert2-react-content": "^4.2.0",
+    "use-shopping-cart": "^3.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

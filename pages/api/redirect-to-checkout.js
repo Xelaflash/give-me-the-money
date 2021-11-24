@@ -34,7 +34,7 @@ export default async (req, res) => {
       payment_method_types: ['card'],
       billing_address_collection: 'auto',
       mode: 'payment',
-      success_url: `${process.env.SITE_URL}/success.html`,
+      success_url: `${process.env.SITE_URL}/success`,
       cancel_url: `${process.env.SITE_URL}`,
       line_items
     });

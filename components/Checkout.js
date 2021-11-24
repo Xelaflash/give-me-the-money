@@ -6,8 +6,7 @@ import { useShoppingCart } from 'use-shopping-cart'
 // styles
 import styled from 'styled-components';
 import { COLORS } from '../styles/constants';
-import { AlertTriangle } from 'react-feather';
-
+// import { AlertTriangle } from 'react-feather';
 
 function Checkout() {
   const { cartCount, cartDetails, clearCart } = useShoppingCart();
