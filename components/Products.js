@@ -3,14 +3,14 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 //  Data
-import PRODUCT_DATA from '../data/products';
+import PRODUCT_DATA from '../data/products.js';
 import ProductList from './ProductList';
 
-export default function Products({ addToCart }) {
+export default function Products() {
   const [products] = useState(PRODUCT_DATA);
   return (
     <ProductsWrapper>
-      <ProductList products={products} addToCart={addToCart} />
+      <ProductList products={products} />
     </ProductsWrapper>
   );
 }

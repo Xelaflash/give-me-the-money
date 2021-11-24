@@ -1,47 +1,72 @@
+import { useRef, useEffect } from 'react';
 // Styles import
 import styled from 'styled-components';
-import { COLORS } from '../styles/constants';
-
+import { COLORS, WEIGHTS } from '../styles/constants';
 // Utils imports
 import { useCart } from '../utils/cartState';
-import formatMoney from '../utils/formatMoney';
-import calcTotalCartPrice from '../utils/calcTotalCartPrice';
-
+// libs
+import { useShoppingCart } from 'use-shopping-cart'
 //  Component
 import CartItem from './CartItem';
+import { Checkout } from "./Checkout";
 
-// import { Checkout } from "./Checkout";
-
-// const redirectToCheckout = async () => {
-//   ...
-// };
-
-export default function Cart({ cartItems, removeFromCart }) {
+export default function Cart() {
   const { cartOpen, closeCart } = useCart();
-  return (
-    <CartStyles open={cartOpen}>
-      <header>
-        <Supreme>Your Cart</Supreme>
-        <CloseButton type="button" onClick={closeCart} id="close-cart">
-          &times;
-        </CloseButton>
-      </header>
-      <ul>
-        {cartItems.map((cartItem) => (
-          <CartItem key={cartItem.product.id} cartItem={cartItem} removeFromCart={removeFromCart} />
-        ))}
-      </ul>
-      {!cartItems.length && <span>No products in cart.</span>}
-      <footer>
-        <p>
-          TOTAL: <span>{formatMoney(calcTotalCartPrice(cartItems))}</span>
-        </p>
+  const {
+    cartCount,
+    clearCart,
+    cartDetails,
+    formattedTotalPrice
+  } = useShoppingCart();
 
-        <form action="/create-checkout-session" method="POST">
-          <button type="submit">Checkout</button>
-        </form>
-      </footer>
-    </CartStyles>
+  const ref = useRef();
+  console.log(cartOpen);
+
+  useEffect(() => {
+    const checkIfClickedOutside = e => {
+      // If the cart is open and the clicked target is not within the cart,
+      // then close the cart
+      if (cartOpen && ref.current && !ref.current.contains(e.target)) {
+        closeCart();
+      }
+    }
+    document.addEventListener("click", checkIfClickedOutside)
+    return () => {
+      // Cleanup the event listener
+      document.removeEventListener("click", checkIfClickedOutside)
+    }
+  }, [cartOpen])
+
+  const cartItems = Object.values(cartDetails);
+
+  return (
+      <CartStyles open={cartOpen} ref={ref}>
+        <header>
+          <Supreme>Your Cart</Supreme>
+          <CloseButton type="button" onClick={closeCart} id="close-cart">
+            &times;
+          </CloseButton>
+        </header>
+        <ul>
+          {cartItems.map((cartItem) => (
+            <CartItem key={cartItem.id} cartItem={cartItem} />
+          ))}
+        </ul>
+          {(cartCount === 0) ? <Filler><span>No products in cart...(yet 😇)</span></Filler> : null}
+          {(cartCount !== 0) ? 
+            <ClearCartBtn 
+              type="button" 
+              onClick={clearCart}> 
+              Clear Cart
+            </ClearCartBtn> 
+            : null}
+        <footer>
+          <p>
+            TOTAL: <span>{formattedTotalPrice}</span>
+          </p>
+          <Checkout />
+        </footer>
+      </CartStyles>
   );
 }
 
@@ -53,6 +78,17 @@ const Supreme = styled.h3`
   transform: skew(-3deg);
   margin: 0;
   font-size: 2rem;
+`;
+
+const Filler = styled.div`
+  height: 10rem;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    font-weight: ${WEIGHTS.bold};
+    font-size: 1.2rem;
+  }
 `;
 
 const CartStyles = styled.div`
@@ -78,11 +114,14 @@ const CartStyles = styled.div`
     width: max-content;
     margin: auto;
   }
+  ul {
+    margin-top:1.5rem;
+  }
   footer {
     border-top: 10px double ${COLORS.primary};
-    margin-top: 2rem;
-    padding: 2rem;
-    font-size: 2.5rem;
+    margin-top: 1rem;
+    padding: 2rem 2rem 0 2rem;
+    font-size: 2.2rem;
     font-weight: 900;
     p {
       display: flex;
@@ -106,4 +145,15 @@ const CloseButton = styled.button`
   top: -2px;
   padding: 4px 12px;
   line-height: 1;
+`;
+
+const ClearCartBtn = styled.button`
+  background: ${COLORS.primary};
+  color: ${COLORS.white};
+  font-size: 1rem;
+  padding: 4px 12px;
+  font-weight: ${WEIGHTS.normal};
+  border: none;
+  box-shadow: 3px 2px 2px 0px rgba(38, 120, 95, 0.7);
+  margin:10px auto;
 `;

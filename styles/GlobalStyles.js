@@ -65,6 +65,8 @@ const GlobalStyles = createGlobalStyle`
       float above the app.
     */
     isolation: isolate;
+    --color-primary: hsl(162, 52%, 31%);
+    --color-secondary: hsl(223, 74%, 7%);
   }
 
   html, body {

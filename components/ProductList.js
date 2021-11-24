@@ -2,51 +2,52 @@
 import styled from 'styled-components';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { COLORS, WEIGHTS } from '../styles/constants';
-
 // utils
-import formatMoney from '../utils/formatMoney';
 import { useCart } from '../utils/cartState';
-
+import formatMoney from '../utils/formatMoney';
+// libs 
+import { useShoppingCart } from 'use-shopping-cart';
 // svg bg
 import SvgBackground from './SvgBackground';
 import SvgBgPrimaryCard from './SvgBgPrimaryCard';
 
-export default function ProductList({ products, addToCart }) {
+export default function ProductList({ products }) {
   const { openCart, cartOpen } = useCart();
 
   // Svg background
   const svgString = encodeURIComponent(renderToStaticMarkup(<SvgBackground />));
   const dataUri = `url("data:image/svg+xml,${svgString}")`;
-
   const svgString2 = encodeURIComponent(renderToStaticMarkup(<SvgBgPrimaryCard />));
   const dataUri2 = `url("data:image/svg+xml,${svgString2}")`;
+
+  const { addItem } = useShoppingCart();
 
   return (
     <ProductsList>
       {products.map((product) => (
-        <li
-          className="card"
-          key={product.id}
-          style={{
-            '--dataUri': dataUri,
-            '--dataUriPrimaryCard': dataUri2,
-          }}
-        >
-          <h3>{product.title}</h3>
-          <p>{formatMoney(product.price)}</p>
-          <p id="description">{product.description}</p>
-          <button
-            type="button"
-            onClick={() => {
-              addToCart({ product });
-              !cartOpen ? 
-                setTimeout(() => {openCart();}, 1000)
-              : null;
+          <li
+            className="card"
+            key={product.id}
+            style={{
+              '--dataUri': dataUri,
+              '--dataUriPrimaryCard': dataUri2,
             }}
           >
-            Give Now
-          </button>
-        </li>
+            <h3>{product.name}</h3>
+            <p>{formatMoney(product.price)}</p>
+            <p id="description">{product.description}</p>
+            <button
+              type="button"
+              onClick={() => {
+                addItem(product);
+                !cartOpen ? 
+                  setTimeout(() => {openCart();}, 1500)
+                : null;
+              }}
+            >
+              Give Now
+            </button>
+          </li>
       ))}
     </ProductsList>
   );

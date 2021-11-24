@@ -19,7 +19,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "pages/api/checkout/checkout_sessions.js"
   ],
   "exclude": ["node_modules"]
 }
