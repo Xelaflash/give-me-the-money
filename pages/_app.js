@@ -10,11 +10,9 @@ function MyApp({ Component, pageProps }) {
       mode="payment"
       cartMode="checkout-session"
       stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
-      //!! to change
-      successUrl="https://localhost:3000"
-      cancelUrl="https://localhost:3000"
+      success_url='{process.env.SITE_URL}/success.html'
+      cancel_url= {process.env.SITE_URL}
       currency="USD"
-      allowedCountries={['US', 'GB', 'CA', 'FR']}
       billingAddressCollection={true}
     >
       <CartStateProvider>

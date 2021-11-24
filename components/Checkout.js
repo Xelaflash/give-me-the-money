@@ -10,8 +10,7 @@ import { AlertTriangle } from 'react-feather';
 
 
 function Checkout() {
-  const [status, setStatus] = useState('idle')
-  const { cartCount, cartDetails } = useShoppingCart();
+  const { cartCount, cartDetails, clearCart } = useShoppingCart();
   const [loading, setLoading] = useState(false);
   const [cartEmpty, setCartEmpty] = useState(true);
 
@@ -36,30 +35,6 @@ function Checkout() {
         name='cartDetails'
         value={JSON.stringify(cartDetails)}
       />
-      <div
-        style={{
-          fontSize: 14,
-          color: 'red',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
-        {status === 'missing-items' && (
-          <>
-            <AlertTriangle size={24}/>
-            <ErrorMsg>
-              Your cart is empty.
-            </ErrorMsg>
-          </>
-        )}
-        {status === 'redirect-error' && (
-          <>
-            <AlertTriangle size={24}/>
-            <ErrorMsg>Unable to redirect to Stripe checkout page.</ErrorMsg>
-          </>
-        )}
-      </div>
       <SickButton type='submit' onClick={handleCheckout} disabled={cartEmpty || loading}>Pay Now</SickButton>
     </CheckoutFormStyles>
   );
