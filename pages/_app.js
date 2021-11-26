@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
       mode="payment"
       cartMode="checkout-session"
       stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
-      success_url='{process.env.SITE_URL}/success.html'
+      success_url='{process.env.SITE_URL}/success'
       cancel_url= {process.env.SITE_URL}
       currency="USD"
       billingAddressCollection={true}
