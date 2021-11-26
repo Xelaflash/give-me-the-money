@@ -22,7 +22,7 @@ export default function Success() {
       html: <i>Thanks for the support</i>,
       icon: 'success',
     });
-  }, [MySwal]);
+  }, []);
   useEffect(() =>
     setTimeout(() => {
       clearCart();
