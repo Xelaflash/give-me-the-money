@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export default function Layout({ children }) {
@@ -12,3 +13,7 @@ const LayoutStyles = styled.div`
   background-size: cover;
   background-image: url('/images/layered-waves.svg');
 `;
+
+Layout.propTypes = {
+  children: PropTypes.any,
+};

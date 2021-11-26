@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 // nextJS
 import Image from 'next/image';
 // libs
@@ -16,6 +17,7 @@ const triplet = (e1, e2, e3) =>
   keyStr.charAt(e1 >> 2) +
   keyStr.charAt(((e1 & 3) << 4) | (e2 >> 4)) +
   keyStr.charAt(((e2 & 15) << 2) | (e3 >> 6)) +
+  // eslint-disable-next-line no-bitwise
   keyStr.charAt(e3 & 63);
 
 const rgbDataURL = (r, g, b) =>
@@ -24,6 +26,7 @@ const rgbDataURL = (r, g, b) =>
   }/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==`;
 
 export default function CartItem({ cartItem }) {
+  const product = cartItem;
   const { removeItem } = useShoppingCart();
 
   return (
@@ -32,24 +35,24 @@ export default function CartItem({ cartItem }) {
         <StyledImage
           width={100}
           height={60}
-          src={cartItem.image}
+          src={product.image}
           placeholder="blur"
           blurDataURL={rgbDataURL(237, 181, 6)}
-          alt={cartItem.name}
+          alt={product.name}
           className="item_img"
         />
       </div>
       <ProductPriceWrapper>
         <div className="title-Wrapper">
-          <h3 className="title">{cartItem.name}</h3>
+          <h3 className="title">{product.name}</h3>
           <p className="qty">
             {' '}
-            ({formatMoney(cartItem.price)} &times; {cartItem.quantity})
+            ({formatMoney(product.price)} &times; {product.quantity})
           </p>
         </div>
-        <h3 className="price">{formatMoney(cartItem.price * cartItem.quantity)}</h3>
+        <h3 className="price">{formatMoney(product.price * product.quantity)}</h3>
       </ProductPriceWrapper>
-      <RemoveBtn type="button" title="Remove item from Cart" onClick={() => removeItem(cartItem.id)}>
+      <RemoveBtn type="button" title="Remove item from Cart" onClick={() => removeItem(product.id)}>
         <Trash2 color={`${COLORS.veryPaleGreen}`} />
       </RemoveBtn>
     </CartItemStyles>
@@ -102,3 +105,7 @@ const RemoveBtn = styled.button`
     opacity: 0.8;
   }
 `;
+
+CartItem.propTypes = {
+  cartItem: PropTypes.object,
+};

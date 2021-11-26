@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 // libs
 import { CartProvider } from 'use-shopping-cart';
 // styles
@@ -23,5 +24,10 @@ function MyApp({ Component, pageProps }) {
     </CartProvider>
   );
 }
+
+MyApp.propTypes = {
+  Component: PropTypes.any,
+  pageProps: PropTypes.any,
+};
 
 export default MyApp;

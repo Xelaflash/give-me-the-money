@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 // transition pkg
 import { createRef } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -71,3 +72,7 @@ const AnimationStyles = styled.span`
     text-align: center;
   }
 `;
+
+CartCount.propTypes = {
+  count: PropTypes.number,
+};

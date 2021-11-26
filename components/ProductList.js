@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 // libs
 import { useShoppingCart } from 'use-shopping-cart';
 // styles imports
@@ -22,6 +23,14 @@ export default function ProductList({ products }) {
 
   const { addItem } = useShoppingCart();
 
+  const openCartHandler = () => {
+    if (!cartOpen) {
+      setTimeout(() => {
+        openCart();
+      }, 1500);
+    }
+  };
+
   return (
     <ProductsList>
       {products.map((product) => (
@@ -40,11 +49,7 @@ export default function ProductList({ products }) {
             type="button"
             onClick={() => {
               addItem(product);
-              !cartOpen
-                ? setTimeout(() => {
-                    openCart();
-                  }, 1500)
-                : null;
+              openCartHandler();
             }}
           >
             Give Now
@@ -135,3 +140,7 @@ const ProductsList = styled.ul`
     }
   }
 `;
+
+ProductList.propTypes = {
+  products: PropTypes.array,
+};

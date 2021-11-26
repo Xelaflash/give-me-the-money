@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const hiddenStyles = {
   display: 'inline-block',
@@ -43,4 +44,9 @@ const VisuallyHidden = ({ children, ...delegated }) => {
     </span>
   );
 };
+
+VisuallyHidden.propTypes = {
+  children: PropTypes.any,
+};
+
 export default VisuallyHidden;

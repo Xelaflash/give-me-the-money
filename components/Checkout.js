@@ -9,29 +9,25 @@ import { COLORS } from '../styles/constants';
 // import { AlertTriangle } from 'react-feather';
 
 function Checkout() {
-  const { cartCount, cartDetails, clearCart } = useShoppingCart();
+  const { cartCount, cartDetails } = useShoppingCart();
   const [loading, setLoading] = useState(false);
   const [cartEmpty, setCartEmpty] = useState(true);
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
 
-  useEffect(() => {
-    if (cartDetails == null || cartDetails.length === 0) {
-      cartDetails = { cartDetails: [] };
-    }
-  }, []);
-
   const form = document.querySelector('form');
 
-  async function handleCheckout(event) {
+  const handleCheckout = async (event) => {
     event.preventDefault();
+    setLoading(true);
     form.submit();
-  }
+    setLoading(false);
+  };
 
   return (
-    <CheckoutFormStyles action="/api/redirect-to-checkout" method="POST">
+    <CheckoutFormStyles action="/api/redirect-to-checkout" method="POST" onSubmit={handleCheckout}>
       <input type="hidden" name="cartDetails" value={JSON.stringify(cartDetails)} />
-      <SickButton type="submit" onClick={handleCheckout} disabled={cartEmpty || loading}>
+      <SickButton type="submit" disabled={cartEmpty || loading}>
         Pay Now
       </SickButton>
     </CheckoutFormStyles>

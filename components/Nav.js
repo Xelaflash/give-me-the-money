@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 // Styles import
 import { ShoppingCart } from 'react-feather';
 import styled from 'styled-components';
@@ -46,3 +47,7 @@ const CartWrapper = styled.div`
   display: flex;
   padding: 1rem;
 `;
+
+Nav.propTypes = {
+  count: PropTypes.number,
+};

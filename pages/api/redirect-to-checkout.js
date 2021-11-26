@@ -1,6 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_API_SECRET);
-const validateCartItems =
-  require('use-shopping-cart/utilities').validateCartItems;
+const { validateCartItems } = require('use-shopping-cart/utilities');
 
 // instead of returning a session ID to the client side for redirectToCheckout,
 // we can redirect serverside with the created sessions url (session.url)
@@ -18,9 +17,9 @@ export default async (req, res) => {
     res.status(400);
   }
 
-  let line_items;
+  let lineItems;
   try {
-    line_items = product;
+    lineItems = product;
   } catch (error) {
     res.status(422).json({
       message: 'Some of the items in  your cart are invalid',
@@ -36,7 +35,7 @@ export default async (req, res) => {
       mode: 'payment',
       success_url: `${process.env.SITE_URL}/success`,
       cancel_url: `${process.env.SITE_URL}`,
-      line_items
+      line_items: lineItems,
     });
   } catch (error) {
     res.status(500).json({
