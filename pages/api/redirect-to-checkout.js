@@ -1,4 +1,5 @@
 const stripe = require('stripe')(process.env.STRIPE_API_SECRET);
+// eslint-disable-next-line import/no-unresolved
 const { validateCartItems } = require('use-shopping-cart/utilities');
 
 // instead of returning a session ID to the client side for redirectToCheckout,

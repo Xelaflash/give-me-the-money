@@ -12,5 +12,14 @@
         "tabWidth": 2
       }
     ]
-  }
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "ignorePatterns": ["*.d.ts", "node_modules", "dist"]
 }

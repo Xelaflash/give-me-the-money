@@ -1,3 +1,4 @@
+/* eslint-disable no-bitwise */
 import PropTypes from 'prop-types';
 // nextJS
 import Image from 'next/image';
@@ -17,7 +18,6 @@ const triplet = (e1, e2, e3) =>
   keyStr.charAt(e1 >> 2) +
   keyStr.charAt(((e1 & 3) << 4) | (e2 >> 4)) +
   keyStr.charAt(((e2 & 15) << 2) | (e3 >> 6)) +
-  // eslint-disable-next-line no-bitwise
   keyStr.charAt(e3 & 63);
 
 const rgbDataURL = (r, g, b) =>
