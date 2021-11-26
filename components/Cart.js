@@ -20,20 +20,24 @@ export default function Cart() {
   } = useShoppingCart();
 
   const ref = useRef();
-  console.log(cartOpen);
 
   useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
     const checkIfClickedOutside = e => {
       // If the cart is open and the clicked target is not within the cart,
       // then close the cart
-      if (cartOpen && ref.current && !ref.current.contains(e.target)) {
+      if (cartOpen && !ref.current.contains(e.target)) {
         closeCart();
-      }
+      } 
     }
-    document.addEventListener("click", checkIfClickedOutside)
+    document.addEventListener("mousedown", checkIfClickedOutside);
+    document.addEventListener("touchstart", checkIfClickedOutside);
     return () => {
       // Cleanup the event listener
-      document.removeEventListener("click", checkIfClickedOutside)
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+      document.removeEventListener("touchstart", checkIfClickedOutside);
     }
   }, [cartOpen])
 
