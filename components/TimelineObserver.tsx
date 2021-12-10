@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 // Code coming from https://github.com/akashuba/react-timeline-animation package
 // Add to put it in my own codebase because i needed to tweek a little nit and because of the window undefined error
@@ -12,7 +12,7 @@ interface TimelineObserverProps {
   fillColor?: string;
 }
 
-let halfScreenHeight;
+let halfScreenHeight: number;
 if (typeof window !== "undefined") {
   // here is the tweek => original code was '/2'
   halfScreenHeight = window?.innerHeight / 2.5;
@@ -94,7 +94,7 @@ const TimelineObserver = ({
   const observablesStore = useRef(new Map<string, ObservablesProps>());
   const callbacks = useRef<{ [key: string]: () => void }>({});
 
-  const callback = (entries) => {
+  const callback = (entries: any[]) => {
     entries?.forEach((entry) => {
       if (entry.isIntersecting) {
         setObservable({
