@@ -8,10 +8,6 @@ export default function Layout({ children }) {
 const LayoutStyles = styled.div`
   min-height: 100vh;
   width: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-image: url('/images/layered-waves.svg');
 `;
 
 Layout.propTypes = {

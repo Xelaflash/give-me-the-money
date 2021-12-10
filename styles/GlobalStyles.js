@@ -75,8 +75,23 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     color: ${COLORS.white};
+    background: ${COLORS.secondary};
     font-weight: ${WEIGHTS.normal};
   }
+
+  .header {
+    font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
+    font-weight: ${WEIGHTS.bold};
+    margin: 0;
+  }
+
+  .subheader {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
   @media (pointer: coarse) {
     html {
       --min-tap-height: 44px;

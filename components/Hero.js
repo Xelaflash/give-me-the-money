@@ -5,10 +5,10 @@ import { COLORS, WEIGHTS } from '../styles/constants';
 export default function Hero() {
   return (
     <HeroWrapper>
-      <h1>
+      <h1 className="header">
         Give me the <span>Money</span>
       </h1>
-      <h2>
+      <h2 className="subheader">
         You want to donate? I <span>collect?</span>
       </h2>
     </HeroWrapper>
@@ -19,23 +19,10 @@ const HeroWrapper = styled.section`
   margin: auto;
   text-align: center;
 
-  h1 {
-    font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
-    font-weight: ${WEIGHTS.bold};
-    margin: 0;
-  }
-
   h1 span,
   h2 span {
     color: ${COLORS.primary};
     font-weight: ${WEIGHTS.bold};
     text-transform: uppercase;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-    margin: 0;
-    margin-bottom: 10px;
-    font-style: italic;
   }
 `;

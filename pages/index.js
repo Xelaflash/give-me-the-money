@@ -1,6 +1,7 @@
 // next imports
 import Head from 'next/head';
 // lib
+import styled from 'styled-components';
 import { useShoppingCart } from 'use-shopping-cart';
 // components
 import Layout from '../components/Layout';
@@ -8,6 +9,8 @@ import Nav from '../components/Nav';
 import Hero from '../components/Hero';
 import Products from '../components/Products';
 import Cart from '../components/Cart';
+import Timeline from '../components/Timeline';
+import Spacer from '../components/Spacer';
 
 export default function Home() {
   const { cartCount } = useShoppingCart();
@@ -72,8 +75,12 @@ export default function Home() {
         <Nav count={cartCount} />
         <main>
           <Cart />
-          <Hero />
-          <Products />
+          <LandingWrapper>
+            <Hero />
+            <Products />
+            {/* <Spacer size={32} /> */}
+          </LandingWrapper>
+          <Timeline />
         </main>
       </div>
     </Layout>
@@ -96,3 +103,10 @@ export default function Home() {
 //     blurDataURL
 //   />
 // </a>;
+
+const LandingWrapper = styled.section`
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url('/images/layered-waves.svg');
+`;
