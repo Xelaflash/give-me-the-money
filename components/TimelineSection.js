@@ -1,12 +1,15 @@
-// styles imports
 import React, { useEffect, useRef, useState } from 'react';
+import PropTypes from 'prop-types';
 import Image from 'next/image';
+// styles imports
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
+import { COLORS } from '../styles/constants';
+
 // code coming from pkg https://github.com/akashuba/react-timeline-animation
 import TimelineObserver from './TimelineObserver';
+//  Libs
 import { fireConfetti } from './confetti';
-import { COLORS } from '../styles/constants';
 
 const Timeline = ({ setObserver, callback }) => {
   const [message1, setMessage1] = useState('');
@@ -215,3 +218,8 @@ const ImageWrapper = styled.div`
   margin: 52px auto;
   max-width: fit-content;
 `;
+
+Timeline.propTypes = {
+  setObserver: PropTypes.any,
+  callback: PropTypes.any,
+};

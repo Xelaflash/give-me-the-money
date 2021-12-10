@@ -1,6 +1,6 @@
 // styles imports
 import styled from 'styled-components';
-import { COLORS, WEIGHTS } from '../styles/constants';
+// import { COLORS, WEIGHTS } from '../styles/constants';
 
 export default function Hero() {
   return (
