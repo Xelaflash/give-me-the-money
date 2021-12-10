@@ -18,11 +18,4 @@ const HeroWrapper = styled.section`
   width: max-content;
   margin: auto;
   text-align: center;
-
-  h1 span,
-  h2 span {
-    color: ${COLORS.primary};
-    font-weight: ${WEIGHTS.bold};
-    text-transform: uppercase;
-  }
 `;

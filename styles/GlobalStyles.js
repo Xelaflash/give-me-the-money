@@ -92,6 +92,13 @@ const GlobalStyles = createGlobalStyle`
     font-style: italic;
   }
 
+  .header span,
+  .subheader span {
+    color: ${COLORS.primary};
+    font-weight: ${WEIGHTS.bold};
+    text-transform: uppercase;
+  }
+
   @media (pointer: coarse) {
     html {
       --min-tap-height: 44px;
