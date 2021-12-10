@@ -31,6 +31,7 @@ const NavWrapper = styled.nav`
   display: flex;
   justify-content: flex-end;
   padding: 10px 15px;
+}
 
   button {
     display: flex;

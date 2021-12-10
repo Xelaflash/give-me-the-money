@@ -1,12 +1,14 @@
 // styles imports
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import styled from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
 // code coming from pkg https://github.com/akashuba/react-timeline-animation
 import TimelineObserver from './TimelineObserver';
 import { fireConfetti } from './confetti';
 import { COLORS } from '../styles/constants';
 
-const Timeline = ({ setObserver }) => {
+const Timeline = ({ setObserver, callback }) => {
   const [message1, setMessage1] = useState('');
   const [message2, setMessage2] = useState('');
   const [message3, setMessage3] = useState('');
@@ -29,6 +31,7 @@ const Timeline = ({ setObserver }) => {
   const messageCallback3 = () => {
     setMessage3('Congratulations!!\nYou just Gave the Money');
     fireConfetti();
+    callback();
   };
 
   useEffect(() => {
@@ -74,7 +77,14 @@ const Timeline = ({ setObserver }) => {
 };
 
 export default function TimelineSection() {
-  const [message, setMessage] = useState('');
+  const [isVisible, setVisibility] = useState(false);
+
+  const onCallback = () => {
+    setVisibility(true);
+  };
+
+  // fix for CSSTransition error => findDomnode deprecated
+  const ref1 = React.useRef(null);
 
   return (
     <TimelineSectionStyles>
@@ -101,9 +111,18 @@ export default function TimelineSection() {
       <TimelineObserver
         initialColor={COLORS.white}
         fillColor="#26785f"
-        handleObserve={(setObserver) => <Timeline className="timeline" setObserver={setObserver} />}
+        handleObserve={(setObserver) => (
+          <Timeline callback={onCallback} className="timeline" setObserver={setObserver} />
+        )}
       />
-      <div className="stub2">{message}</div>
+      <div className="stub2">
+        {/* using nodeRef & Ref to fix CSSTransition pkg error */}
+        <CSSTransition nodeRef={ref1} in={isVisible} timeout={500} classNames="fadeIn" unmountOnExit>
+          <ImageWrapper ref={ref1}>
+            {isVisible && <Image src="/images/picsou.gif" alt="You gave the money" width={450} height={300} />}
+          </ImageWrapper>
+        </CSSTransition>
+      </div>
     </TimelineSectionStyles>
   );
 }
@@ -139,10 +158,6 @@ const TimelineSectionStyles = styled.section`
     background-color: ${COLORS.white};
   }
 
-  .stub2 {
-    height: 1000px;
-  }
-
   .circleWrapper {
     position: relative;
   }
@@ -153,7 +168,7 @@ const TimelineSectionStyles = styled.section`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: ${COLORS.primary};
+    color: ${COLORS.secondary};
     border-radius: 50%;
     background-color: ${COLORS.white};
   }
@@ -174,9 +189,29 @@ const TimelineSectionStyles = styled.section`
   #message2 {
     right: 50px;
   }
+
+  .stub2 {
+    height: 500px;
+  }
+
+  .fadeIn-enter {
+    opacity: 0;
+  }
+  .fadeIn-enter-active {
+    opacity: 0.25;
+    transition: opacity 300ms;
+  }
+  .fadeIn-enter-done {
+    opacity: 1;
+  }
 `;
 
 const TitleWrapper = styled.div`
   padding-top: 25px;
   text-align: center;
+`;
+
+const ImageWrapper = styled.div`
+  margin: 52px auto;
+  max-width: fit-content;
 `;
