@@ -66,7 +66,10 @@ const GlobalStyles = createGlobalStyle`
     */
     isolation: isolate;
     --color-primary: hsl(162, 52%, 31%);
+    --color-gray-700: hsl(223, 5%, 60%);
     --color-secondary: hsl(223, 74%, 7%);
+    scrollbar-color: var(--color-gray-700) var(--color-secondary);
+    scrollbar-width: thin;
   }
 
   html, body {
