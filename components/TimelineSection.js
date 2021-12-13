@@ -47,31 +47,31 @@ const Timeline = ({ setObserver, callback }) => {
   }, []);
 
   return (
-    <div className="wrapper">
-      <div id="timeline1" ref={timeline1} className="timeline" />
-      <div className="circleWrapper">
-        <div id="circle1" ref={circle1} className="circle">
+    <div className='wrapper'>
+      <div id='timeline1' ref={timeline1} className='timeline' />
+      <div className='circleWrapper'>
+        <div id='circle1' ref={circle1} className='circle'>
           1
         </div>
-        <div className="message" id="message1">
+        <div className='message' id='message1'>
           {message1}
         </div>
       </div>
-      <div id="timeline2" ref={timeline2} className="timeline" />
-      <div className="circleWrapper">
-        <div id="circle2" ref={circle2} className="circle">
+      <div id='timeline2' ref={timeline2} className='timeline' />
+      <div className='circleWrapper'>
+        <div id='circle2' ref={circle2} className='circle'>
           2
         </div>
-        <div className="message" id="message2">
+        <div className='message' id='message2'>
           {message2}
         </div>
       </div>
-      <div id="timeline3" ref={timeline3} className="timeline" />
-      <div className="circleWrapper">
-        <div id="circle3" ref={circle3} className="circle">
+      <div id='timeline3' ref={timeline3} className='timeline' />
+      <div className='circleWrapper'>
+        <div id='circle3' ref={circle3} className='circle'>
           3
         </div>
-        <div className="message" id="message3">
+        <div className='message' id='message3'>
           {message3}
         </div>
       </div>
@@ -92,37 +92,37 @@ export default function TimelineSection() {
   return (
     <TimelineSectionStyles>
       <svg
-        preserveAspectRatio="none"
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 440 52"
-        className="wrappercurves"
+        preserveAspectRatio='none'
+        xmlns='http://www.w3.org/2000/svg'
+        fill='none'
+        viewBox='0 0 440 52'
+        className='wrappercurves'
       >
         <path
-          d="M220 1C133.228-1.86 0 33 0 33v18.5h439.5V12s-24.077 14.898-41 21C331.878 57.02 290.781 3.333 220 1z"
-          fill="#26785f"
+          d='M220 1C133.228-1.86 0 33 0 33v18.5h439.5V12s-24.077 14.898-41 21C331.878 57.02 290.781 3.333 220 1z'
+          fill='#26785f'
         />
       </svg>
       <TitleWrapper>
-        <h2 className="header">
+        <h2 className='header'>
           How it <span>works</span>
         </h2>
-        <p className="subheader">
+        <p className='subheader'>
           As easy as <span>1, 2, 3</span>
         </p>
       </TitleWrapper>
       <TimelineObserver
         initialColor={COLORS.white}
-        fillColor="#26785f"
+        fillColor='#26785f'
         handleObserve={(setObserver) => (
-          <Timeline callback={onCallback} className="timeline" setObserver={setObserver} />
+          <Timeline callback={onCallback} className='timeline' setObserver={setObserver} />
         )}
       />
-      <div className="stub2">
+      <div className='stub2'>
         {/* using nodeRef & Ref to fix CSSTransition pkg error */}
-        <CSSTransition nodeRef={ref1} in={isVisible} timeout={500} classNames="fadeIn" unmountOnExit>
+        <CSSTransition nodeRef={ref1} in={isVisible} timeout={500} classNames='fadeIn' unmountOnExit>
           <ImageWrapper ref={ref1}>
-            {isVisible && <Image src="/images/picsou.gif" alt="You gave the money" width={450} height={300} />}
+            {isVisible && <Image src='/images/picsou.gif' alt='You gave the money' width={450} height={300} />}
           </ImageWrapper>
         </CSSTransition>
       </div>
