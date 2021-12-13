@@ -7,9 +7,9 @@ export const COLORS = {
     700: 'hsl(220deg, 5%, 40%)',
     900: 'hsl(220deg, 3%, 20%)',
   },
-  // Dollar green #26785f
+  // Dollar green #26785f rgb(38,120,95)
   primary: 'hsl(162, 52%, 31%)',
-  // blue #050c1f
+  // blue #050c1f rgb(5, 12 ,31)
   secondary: 'hsl(223, 74%, 7%)',
   // vivid green
   vividGreen: 'hsl(151, 73%, 55%)',

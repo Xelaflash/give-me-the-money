@@ -10,6 +10,7 @@ import Hero from '../components/Hero';
 import Products from '../components/Products';
 import Cart from '../components/Cart';
 import TimelineSection from '../components/TimelineSection';
+import TestimonialSection from '../components/TestimonialSection';
 // import Spacer from '../components/Spacer';
 
 export default function Home() {
@@ -78,9 +79,10 @@ export default function Home() {
           <LandingWrapper>
             <Hero />
             <Products />
-            {/* <Spacer size={32} /> */}
           </LandingWrapper>
           <TimelineSection />
+          {/* <Spacer size={92} /> */}
+          <TestimonialSection />
         </MainStyles>
       </div>
     </Layout>
