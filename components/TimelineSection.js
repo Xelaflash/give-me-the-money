@@ -4,6 +4,7 @@ import Image from 'next/image';
 // styles imports
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
+import { ShoppingCart, CreditCard, CheckCircle } from 'react-feather';
 import { COLORS } from '../styles/constants';
 
 // code coming from pkg https://github.com/akashuba/react-timeline-animation
@@ -12,9 +13,9 @@ import TimelineObserver from './TimelineObserver';
 import { fireConfetti } from './confetti';
 
 const Timeline = ({ setObserver, callback }) => {
-  const [message1, setMessage1] = useState('');
-  const [message2, setMessage2] = useState('');
-  const [message3, setMessage3] = useState('');
+  const [message1, setMessage1] = useState(false);
+  const [message2, setMessage2] = useState(false);
+  const [message3, setMessage3] = useState(false);
 
   const timeline1 = useRef(null);
   const timeline2 = useRef(null);
@@ -24,15 +25,15 @@ const Timeline = ({ setObserver, callback }) => {
   const circle3 = useRef(null);
 
   const messageCallback = () => {
-    setMessage1('Choose plan & Add to cart');
+    setMessage1(true);
   };
 
   const messageCallback2 = () => {
-    setMessage2('Checkout & Pay');
+    setMessage2(true);
   };
 
   const messageCallback3 = () => {
-    setMessage3('Congratulations!!\nYou just Gave the Money');
+    setMessage3(true);
     fireConfetti();
     callback();
   };
@@ -54,7 +55,12 @@ const Timeline = ({ setObserver, callback }) => {
           1
         </div>
         <div className='message' id='message1'>
-          {message1}
+          {message1 && (
+            <div className='fade-in-text'>
+              <ShoppingCart color={`${COLORS.primary}`} size={38} />
+              <p>Choose plan & Add to cart</p>
+            </div>
+          )}
         </div>
       </div>
       <div id='timeline2' ref={timeline2} className='timeline' />
@@ -63,7 +69,12 @@ const Timeline = ({ setObserver, callback }) => {
           2
         </div>
         <div className='message' id='message2'>
-          {message2}
+          {message2 && (
+            <div className='fade-in-text'>
+              <CreditCard color={`${COLORS.primary}`} size={38} />
+              <p>Checkout & Pay</p>
+            </div>
+          )}
         </div>
       </div>
       <div id='timeline3' ref={timeline3} className='timeline' />
@@ -72,7 +83,13 @@ const Timeline = ({ setObserver, callback }) => {
           3
         </div>
         <div className='message' id='message3'>
-          {message3}
+          {message3 && (
+            <div className='fade-in-text'>
+              <CheckCircle color={`${COLORS.primary}`} size={38} />
+              <p>Congratulations!!</p>
+              <p>You just Gave the Money</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -179,25 +196,55 @@ const TimelineSectionStyles = styled.section`
 
   .message {
     position: absolute;
-    top: 20%;
-    left: 50;
     width: max-content;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
     font-weight: bold;
+    text-align: center;
   }
 
   #message1,
   #message3 {
-    left: 50px;
+    top: -15px;
+    left: 60px;
   }
 
   #message2 {
-    right: 50px;
+    top: -15px;
+    right: 60px;
   }
 
   .stub2 {
     height: 500px;
   }
 
+  @media (min-height: 800px) {
+    .stub2 {
+      height: 800px;
+    }
+  }
+
+  /* css only solution */
+  .fade-in-text {
+    animation: fadeIn 0.6s;
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 0.25;
+    }
+    50% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /* CSSTransition pkg */
+  /* I use both method to test both solutions */
   .fadeIn-enter {
     opacity: 0;
   }
@@ -216,7 +263,7 @@ const TitleWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  margin: 52px auto;
+  margin: 150px auto 0;
   max-width: fit-content;
 `;
 
