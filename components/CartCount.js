@@ -16,13 +16,13 @@ export default function CartCount({ count }) {
         <CSSTransition
           nodeRef={itemRef}
           unmountOnExit
-          className="count"
-          classNames="count"
+          className='count'
+          classNames='count'
           key={count}
           timeout={{ enter: 600, exit: 600 }}
         >
           <Dot ref={itemRef}>
-            <div className="count_nbr">{count}</div>
+            <div className='count_nbr'>{count}</div>
           </Dot>
         </CSSTransition>
       </TransitionGroup>

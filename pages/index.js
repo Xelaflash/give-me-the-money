@@ -69,8 +69,8 @@ export default function Home() {
       <div>
         <Head>
           <title>Give me the Money</title>
-          <meta name="description" content="Give me the Money Website" />
-          <link rel="icon" href="/favicon.ico" />;
+          <meta name='description' content='Give me the Money Website' />
+          <link rel='icon' href='/favicon.ico' />;
         </Head>
         <Nav count={cartCount} />
         <MainStyles>

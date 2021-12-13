@@ -42,7 +42,7 @@ export default function Cart() {
     <CartStyles open={cartOpen} ref={ref}>
       <header>
         <Supreme>Your Cart</Supreme>
-        <CloseButton type="button" onClick={closeCart} id="close-cart">
+        <CloseButton type='button' onClick={closeCart} id='close-cart'>
           &times;
         </CloseButton>
       </header>
@@ -57,7 +57,7 @@ export default function Cart() {
         </Filler>
       ) : null}
       {cartCount !== 0 ? (
-        <ClearCartBtn type="button" onClick={clearCart}>
+        <ClearCartBtn type='button' onClick={clearCart}>
           Clear Cart
         </ClearCartBtn>
       ) : null}

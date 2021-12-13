@@ -9,12 +9,12 @@ import { CartStateProvider } from '../utils/cartState';
 function MyApp({ Component, pageProps }) {
   return (
     <CartProvider
-      mode="payment"
-      cartMode="checkout-session"
+      mode='payment'
+      cartMode='checkout-session'
       stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY}
-      success_url="{process.env.SITE_URL}/success"
+      success_url='{process.env.SITE_URL}/success'
       cancel_url={process.env.SITE_URL}
-      currency="USD"
+      currency='USD'
       billingAddressCollection
     >
       <CartStateProvider>

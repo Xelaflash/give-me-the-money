@@ -1,3 +1,5 @@
+/* eslint-disable */
+// disabling eslint because tsx file and this is causing issues on build
 import { useEffect, useRef } from "react";
 
 // Code coming from https://github.com/akashuba/react-timeline-animation package

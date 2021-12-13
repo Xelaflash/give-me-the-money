@@ -114,6 +114,7 @@ export default function TimelineSection() {
       <TimelineObserver
         initialColor={COLORS.white}
         fillColor='#26785f'
+        // eslint-disable-next-line react/no-unstable-nested-components
         handleObserve={(setObserver) => (
           <Timeline callback={onCallback} className='timeline' setObserver={setObserver} />
         )}

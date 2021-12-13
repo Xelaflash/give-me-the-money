@@ -35,7 +35,7 @@ export default function ProductList({ products }) {
     <ProductsList>
       {products.map((product) => (
         <li
-          className="card"
+          className='card'
           key={product.id}
           style={{
             '--dataUri': dataUri,
@@ -44,9 +44,9 @@ export default function ProductList({ products }) {
         >
           <h3>{product.name}</h3>
           <p>{formatMoney(product.price)}</p>
-          <p id="description">{product.description}</p>
+          <p id='description'>{product.description}</p>
           <button
-            type="button"
+            type='button'
             onClick={() => {
               addItem(product);
               openCartHandler();

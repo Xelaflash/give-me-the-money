@@ -31,28 +31,28 @@ export default function CartItem({ cartItem }) {
 
   return (
     <CartItemStyles>
-      <div className="img-wrapper">
+      <div className='img-wrapper'>
         <StyledImage
           width={100}
           height={60}
           src={product.image}
-          placeholder="blur"
+          placeholder='blur'
           blurDataURL={rgbDataURL(237, 181, 6)}
           alt={product.name}
-          className="item_img"
+          className='item_img'
         />
       </div>
       <ProductPriceWrapper>
-        <div className="title-Wrapper">
-          <h3 className="title">{product.name}</h3>
-          <p className="qty">
+        <div className='title-Wrapper'>
+          <h3 className='title'>{product.name}</h3>
+          <p className='qty'>
             {' '}
             ({formatMoney(product.price)} &times; {product.quantity})
           </p>
         </div>
-        <h3 className="price">{formatMoney(product.price * product.quantity)}</h3>
+        <h3 className='price'>{formatMoney(product.price * product.quantity)}</h3>
       </ProductPriceWrapper>
-      <RemoveBtn type="button" title="Remove item from Cart" onClick={() => removeItem(product.id)}>
+      <RemoveBtn type='button' title='Remove item from Cart' onClick={() => removeItem(product.id)}>
         <Trash2 color={`${COLORS.veryPaleGreen}`} />
       </RemoveBtn>
     </CartItemStyles>

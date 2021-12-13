@@ -13,8 +13,8 @@ import Nav from '../components/Nav';
 import Cart from '../components/Cart';
 
 export default function Success() {
-  const MySwal = withReactContent(Swal);
   const { cartCount, clearCart } = useShoppingCart();
+  const MySwal = withReactContent(Swal);
 
   useEffect(() => {
     MySwal.fire({
@@ -22,7 +22,9 @@ export default function Success() {
       html: <i>Thanks for the support</i>,
       icon: 'success',
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   useEffect(() =>
     setTimeout(() => {
       clearCart();
@@ -39,7 +41,7 @@ export default function Success() {
         </ThanksMsg>
         <p>If you want to give more money </p>
         <p>Go back 👇</p>
-        <Link href="/">
+        <Link href='/' passHref>
           <ReturnToHome>Home</ReturnToHome>
         </Link>
       </SuccessPageWrapper>
@@ -85,6 +87,7 @@ const ReturnToHome = styled.a`
   transform: skew(-2deg);
   display: inline-block;
   transition: all 0.5s;
+  text-decoration: none;
   &:hover {
     opacity: 0.5;
   }

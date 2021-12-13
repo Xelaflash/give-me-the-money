@@ -25,9 +25,9 @@ function Checkout() {
   };
 
   return (
-    <CheckoutFormStyles action="/api/redirect-to-checkout" method="POST" onSubmit={handleCheckout}>
-      <input type="hidden" name="cartDetails" value={JSON.stringify(cartDetails)} />
-      <SickButton type="submit" disabled={cartEmpty || loading}>
+    <CheckoutFormStyles action='/api/redirect-to-checkout' method='POST' onSubmit={handleCheckout}>
+      <input type='hidden' name='cartDetails' value={JSON.stringify(cartDetails)} />
+      <SickButton type='submit' disabled={cartEmpty || loading}>
         Pay Now
       </SickButton>
     </CheckoutFormStyles>

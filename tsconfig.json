@@ -19,6 +19,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "components/TimelineObserver.js"
   ],
   "exclude": ["node_modules"]
 }

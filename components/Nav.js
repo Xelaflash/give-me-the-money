@@ -16,7 +16,7 @@ export default function Nav({ count }) {
   return (
     <NavWrapper>
       <CartWrapper>
-        <button type="button" onClick={openCart}>
+        <button type='button' onClick={openCart}>
           <ShoppingCart color={`${COLORS.white}`} size={32} />
           <VisuallyHidden>Cart</VisuallyHidden>
           <CartCount count={count} />
