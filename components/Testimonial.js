@@ -8,9 +8,9 @@ export default function Testimonial() {
     // styles inspired from https://css-for-js.dev/ in order to gain time
     <TestimonialStyles>
       <AvatarWrapper>
-        {/* I do not use Next image because of styling issues */}
+        {/* //!!I do not use Next image because of styling issues */}
+        {/* //TODO: add pic id when inside a collection */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        {/* TODO: add pic id when inside a collection */}
         <img src='https://i.pravatar.cc/300' alt='Fake profiles pics - Testimonial section' />
       </AvatarWrapper>
       <blockquote>
