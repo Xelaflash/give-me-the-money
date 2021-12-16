@@ -109,10 +109,10 @@ export default function Home() {
 const MainStyles = styled.main``;
 
 const LandingWrapper = styled.section`
-  scroll-snap-align: start;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   background-image: url('/images/layered-waves.svg');
   min-height: 800px;
+  overflow: hidden;
 `;

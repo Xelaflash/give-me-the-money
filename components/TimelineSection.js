@@ -140,7 +140,7 @@ export default function TimelineSection() {
         {/* using nodeRef & Ref to fix CSSTransition pkg error */}
         <CSSTransition nodeRef={ref1} in={isVisible} timeout={500} classNames='fadeIn' unmountOnExit>
           <ImageWrapper ref={ref1}>
-            {isVisible && <Image src='/images/picsou.gif' alt='You gave the money' width={450} height={300} />}
+            {isVisible && <Image src='/images/picsou.gif' alt='You gave the money' layout='fill' />}
           </ImageWrapper>
         </CSSTransition>
       </div>
@@ -152,11 +152,12 @@ const TimelineSectionStyles = styled.section`
   .wrappercurves {
     margin-top: -1px;
     margin-left: -2px;
+    margin-right: 2px;
     transform: rotate(180deg);
     display: block;
-    width: 100%;
-    min-width: 700px;
+    width: 100.2%;
     height: 50px;
+    overflow: hidden;
   }
 
   .wrapper {
@@ -218,6 +219,21 @@ const TimelineSectionStyles = styled.section`
     height: 500px;
   }
 
+  @media (max-width: 650px) {
+    .message {
+      max-width: 150px;
+      font-size: 1rem;
+    }
+    #message1,
+    #message3 {
+      left: 40px;
+    }
+
+    #message2 {
+      right: 40px;
+    }
+  }
+
   @media (min-height: 800px) {
     .stub2 {
       height: 800px;
@@ -263,8 +279,15 @@ const TitleWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
+  position: relative;
   margin: 150px auto 0;
-  max-width: fit-content;
+  width: 500px;
+  height: 250px;
+
+  @media (max-width: 650px) {
+    width: 300px;
+    height: 150px;
+  }
 `;
 
 Timeline.propTypes = {

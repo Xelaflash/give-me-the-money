@@ -35,6 +35,7 @@ const TestimonialsStyles = styled.section`
 `;
 
 const CurveWrapper = styled.div`
+  overflow: hidden;
   svg {
     --transform: translateY(2px) scale(1.1);
     display: block;

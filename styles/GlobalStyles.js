@@ -102,6 +102,12 @@ const GlobalStyles = createGlobalStyle`
     text-transform: uppercase;
   }
 
+  @media(max-width: 650px) {
+  .subheader {
+    font-size: 1.1rem;
+  }
+  }
+
   @media (pointer: coarse) {
     html {
       --min-tap-height: 44px;

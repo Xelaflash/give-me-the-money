@@ -133,6 +133,18 @@ const CartStyles = styled.div`
       }
     }
   }
+
+  @media (max-width: 650px) {
+    min-width: 100%;
+    footer {
+      font-size: 2rem;
+      padding: 1.5rem 1rem 0 2rem;
+      p {
+      span {
+        padding-left: 4rem;
+      }
+    }
+  }
 `;
 
 const CloseButton = styled.button`

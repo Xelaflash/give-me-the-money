@@ -83,6 +83,14 @@ const TestimonialStyles = styled.figure`
     text-align: center;
     color: var(--color-gray-700);
   }
+
+  @media (max-width: 650px) {
+    padding-left: 8px;
+    padding-right: 8px;
+    blockquote {
+      padding: 0;
+    }
+  }
 `;
 
 const AvatarWrapper = styled.div`

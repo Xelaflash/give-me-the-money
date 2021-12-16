@@ -93,6 +93,16 @@ const ProductPriceWrapper = styled.div`
     flex: 0 1 35%;
     font-size: 1.5rem;
   }
+
+  @media (max-width: 650px) {
+    margin-left: 0.5rem;
+  }
+  .title {
+    font-size: 1rem;
+  }
+  .price {
+    font-size: 1.3rem;
+  }
 `;
 
 const RemoveBtn = styled.button`
@@ -103,6 +113,10 @@ const RemoveBtn = styled.button`
   &:hover {
     cursor: pointer;
     opacity: 0.8;
+  }
+  @media (max-width: 650px) {
+    margin: 0.5rem;
+    font-size: 1.5rem;
   }
 `;
 
