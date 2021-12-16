@@ -65,7 +65,7 @@ const TestimonialStyles = styled.figure`
     font-weight: 900;
     background-image: linear-gradient(-180deg, #26785f, #309a68, #3abd69, #57cc6d, #79d77b, #a5e29a, #cbecbd, #eaf6df);
     background-size: 100%;
-    background-clip: text;
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   figcaption {

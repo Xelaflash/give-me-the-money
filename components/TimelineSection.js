@@ -138,7 +138,7 @@ export default function TimelineSection() {
       />
       <div className='stub2'>
         {/* using nodeRef & Ref to fix CSSTransition pkg error */}
-        <CSSTransition nodeRef={ref1} in={isVisible} timeout={500} classNames='fadeIn' unmountOnExit>
+        <CSSTransition nodeRef={ref1} in={isVisible} timeout={300} classNames='fadeIn' unmountOnExit>
           <ImageWrapper ref={ref1}>
             {isVisible && <Image src='/images/picsou.gif' alt='You gave the money' layout='fill' />}
           </ImageWrapper>
