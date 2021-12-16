@@ -1,37 +1,48 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 import styled from 'styled-components';
-
-// TODO: Make component a carousel and add 2,3 more testimonials => create a data object
+// libs
+import { Rerousel } from 'rerousel';
+// Data
+import { useRef } from 'react';
+import TESTIMONIAL_DATA from '../data/testimonials.js';
 
 export default function Testimonial() {
+  const testimonialRef = useRef(null);
+  const testimonials = TESTIMONIAL_DATA;
+
   return (
     // styles inspired from https://css-for-js.dev/ in order to gain time
-    <TestimonialStyles>
-      <AvatarWrapper>
-        {/* //!!I do not use Next image because of styling issues */}
-        {/* //TODO: add pic id when inside a collection */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src='https://i.pravatar.cc/300' alt='Fake profiles pics - Testimonial section' />
-      </AvatarWrapper>
-      <blockquote>
-        Before I was rich but sad and lonely. <br />
-        Then i gave my money and sky was blue again. <br />
-        Thanks <strong>Give My Money Inc.</strong>
-      </blockquote>
-      <figcaption>
-        <a href='https://twitter.com/GhostXela' target='_blank' rel='noopener noreferrer'>
-          Jean Blaguin
-        </a>
-        King of the Bongo
-      </figcaption>
-    </TestimonialStyles>
+    <Rerousel itemRef={testimonialRef} interval='8000'>
+      {testimonials.map((testimonialItem) => (
+        <CarouselItem key={testimonialItem.id} ref={testimonialRef}>
+          <TestimonialStyles>
+            <AvatarWrapper>
+              {/* //!!I do not use Next image because of styling issues */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={testimonialItem.img} alt='Fake profiles pics - Testimonial section' />
+            </AvatarWrapper>
+            {/* eslint-disable-next-line react/no-danger */}
+            <blockquote dangerouslySetInnerHTML={{ __html: testimonialItem.text }} />
+            <figcaption>
+              <a href='https://twitter.com/GhostXela' target='_blank' rel='noopener noreferrer'>
+                {testimonialItem.author}
+              </a>
+              {testimonialItem.workTitle}
+            </figcaption>
+          </TestimonialStyles>
+        </CarouselItem>
+      ))}
+    </Rerousel>
   );
 }
+
+const CarouselItem = styled.div`
+  width: 100%;
+`;
 
 const TestimonialStyles = styled.figure`
   padding-top: 1.5vw;
   padding-bottom: 4vw;
-  width: 100%;
   max-width: 850px;
   margin-left: auto;
   margin-right: auto;
