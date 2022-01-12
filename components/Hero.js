@@ -41,4 +41,7 @@ const HeroWrapper = styled.section`
   text-align: center;
   padding: 25px;
   border-radius: 20px;
+  .header-span {
+    cursor: help;
+  }
 `;
