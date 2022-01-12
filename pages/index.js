@@ -11,6 +11,7 @@ import Products from '../components/Products';
 import Cart from '../components/Cart';
 import TimelineSection from '../components/TimelineSection';
 import TestimonialSection from '../components/TestimonialSection';
+import SponsorsSection from '../components/SponsorsSection';
 // import Spacer from '../components/Spacer';
 
 export default function Home() {
@@ -83,6 +84,7 @@ export default function Home() {
           <TimelineSection />
           {/* <Spacer size={92} /> */}
           <TestimonialSection />
+          <SponsorsSection />
         </MainStyles>
       </div>
     </Layout>

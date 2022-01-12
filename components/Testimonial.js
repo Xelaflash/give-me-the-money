@@ -1,20 +1,31 @@
 // import Image from 'next/image';
 import styled from 'styled-components';
+
 // libs
-import { Rerousel } from 'rerousel';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 // Data
-import { useRef } from 'react';
 import TESTIMONIAL_DATA from '../data/testimonials.js';
 
 export default function Testimonial() {
-  const testimonialRef = useRef(null);
+  // const testimonialRef = useRef(null);
   const testimonials = TESTIMONIAL_DATA;
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    autoplay: true,
+    autoplaySpeed: 7000,
+    slidesToShow: 1,
+  };
 
   return (
     // styles inspired from https://css-for-js.dev/ in order to gain time
-    <Rerousel itemRef={testimonialRef} interval='8000'>
+    <Slider {...settings}>
       {testimonials.map((testimonialItem) => (
-        <CarouselItem key={testimonialItem.id} ref={testimonialRef}>
+        <CarouselItem key={testimonialItem.id}>
           <TestimonialStyles>
             <AvatarWrapper>
               {/* //!!I do not use Next image because of styling issues */}
@@ -32,7 +43,7 @@ export default function Testimonial() {
           </TestimonialStyles>
         </CarouselItem>
       ))}
-    </Rerousel>
+    </Slider>
   );
 }
 
