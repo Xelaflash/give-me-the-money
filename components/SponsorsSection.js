@@ -1,7 +1,7 @@
 // styles imports
 import Image from 'next/image';
 import styled from 'styled-components';
-
+import { QUERIES } from '../styles/constants';
 // Data
 import SPONSORS_DATA from '../data/sponsors.js';
 
@@ -41,9 +41,13 @@ const TitleWrapper = styled.div`
 const LogoGridWrapper = styled.div`
   margin-top: 72px;
   display: flex;
-  gap: 16px;
+  gap: 32px;
   justify-content: space-around;
   flex-wrap: wrap;
+
+  @media ${QUERIES.tabletAndUp} {
+    gap: 16px;
+  }
 `;
 
 const SponsorLogoWrapper = styled.div`
