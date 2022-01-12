@@ -76,6 +76,10 @@ const GlobalStyles = createGlobalStyle`
     scrollbar-width: thin;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   html, body {
     height: 100%;
   }

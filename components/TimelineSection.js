@@ -107,7 +107,7 @@ export default function TimelineSection() {
   const ref1 = React.useRef(null);
 
   return (
-    <TimelineSectionStyles>
+    <TimelineSectionStyles id='customer-journey'>
       <svg
         preserveAspectRatio='none'
         xmlns='http://www.w3.org/2000/svg'

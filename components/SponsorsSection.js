@@ -10,7 +10,7 @@ export default function SponsorsSection() {
   const sponsors = SPONSORS_DATA;
 
   return (
-    <SponsorsSectionWrapper>
+    <SponsorsSectionWrapper id='sponsors'>
       <TitleWrapper>
         <h2 className='header'>
           Our <span>Sponsors</span>

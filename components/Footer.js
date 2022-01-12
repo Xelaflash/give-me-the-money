@@ -3,6 +3,7 @@ import Image from 'next/image';
 import styled from 'styled-components';
 // responsive queries
 import { Twitter, GitHub, Linkedin, Facebook } from 'react-feather';
+import Link from 'next/link';
 import { QUERIES, WEIGHTS } from '../styles/constants';
 
 //  Components
@@ -23,10 +24,10 @@ export default function Footer() {
 
       <LinksWrapper>
         <p>Sections</p>
-        <a href='#'>Products</a>
-        <a href='#'>Customer Journey</a>
-        <a href='#'>Testimonials</a>
-        <a href='#'>Sponsors</a>
+        <Link href='/'>Products</Link>
+        <Link href='/#customer-journey'>Customer Journey</Link>
+        <Link href='/#testimonials'>Testimonials</Link>
+        <Link href='/#sponsors'>Sponsors</Link>
       </LinksWrapper>
 
       <FlexWrapperRight>
@@ -44,22 +45,22 @@ export default function Footer() {
           </a>
         </BuyCoffeeBtnWrapper>
         <SocialWrapper>
-          <a href='https://twitter.com/GhostXela'>
+          <a href='https://twitter.com/GhostXela' target='_blank' rel='noopener noreferrer'>
             <Twitter size={24} />
             <VisuallyHidden>Twitter</VisuallyHidden>
           </a>
 
-          <a href='https://github.com/Xelaflash'>
+          <a href='https://github.com/Xelaflash' target='_blank' rel='noopener noreferrer'>
             <GitHub size={24} />
             <VisuallyHidden>Github</VisuallyHidden>
           </a>
 
-          <a href='https://www.facebook.com/alexgwebdev'>
+          <a href='https://www.facebook.com/alexgwebdev' target='_blank' rel='noopener noreferrer'>
             <Facebook size={24} />
             <VisuallyHidden>Facebook</VisuallyHidden>
           </a>
 
-          <a href='https://www.linkedin.com/in/alexgwebdev/'>
+          <a href='https://www.linkedin.com/in/alexgwebdev/' target='_blank' rel='noopener noreferrer'>
             <Linkedin size={24} />
             <VisuallyHidden>Linkedin</VisuallyHidden>
           </a>
@@ -114,6 +115,7 @@ const FlexWrapperLeft = styled.div`
   justify-content: space-between;
   @media ${QUERIES.phoneAndDown} {
     text-align: center;
+    grid-row: 3;
   }
 `;
 

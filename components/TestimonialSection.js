@@ -6,7 +6,7 @@ import Testimonial from './Testimonial';
 
 export default function TestimonialSection() {
   return (
-    <TestimonialsStyles>
+    <TestimonialsStyles id='testimonials'>
       {/* the curve style here are greatly inspired from https://css-for-js.dev/ */}
       <CurveWrapper>
         <TopCurveWrapper>
