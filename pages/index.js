@@ -12,6 +12,7 @@ import Cart from '../components/Cart';
 import TimelineSection from '../components/TimelineSection';
 import TestimonialSection from '../components/TestimonialSection';
 import SponsorsSection from '../components/SponsorsSection';
+import Footer from '../components/Footer';
 // import Spacer from '../components/Spacer';
 
 export default function Home() {
@@ -82,31 +83,15 @@ export default function Home() {
             <Products />
           </LandingWrapper>
           <TimelineSection />
-          {/* <Spacer size={92} /> */}
           <TestimonialSection />
           <SponsorsSection />
+          {/* <Spacer size={72} /> */}
+          <Footer />
         </MainStyles>
       </div>
     </Layout>
   );
 }
-
-// TODO: To put in Footer
-// <a
-//   href="https://www.buymeacoffee.com/givemethe.money"
-//   target="_blank"
-//   rel="noreferrer"
-// >
-//   <Image
-//     src="/images/bmc-button.png"
-//     alt="Buy me a coffee button"
-//     quality={75}
-//     width={200}
-//     height={56}
-//     placeholder="blur"
-//     blurDataURL
-//   />
-// </a>;
 
 const MainStyles = styled.main``;
 

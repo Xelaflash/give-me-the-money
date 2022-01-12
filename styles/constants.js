@@ -20,24 +20,20 @@ export const COLORS = {
 };
 
 export const WEIGHTS = {
+  thin: 400,
   normal: 500,
-  medium: 600,
-  bold: 800,
+  medium: 700,
+  bold: 900,
 };
 
 export const BREAKPOINTS = {
-  mobileMin: 370,
-  tabletMin: 550,
-  laptopMin: 1100,
-  desktopMin: 1500,
+  phoneMax: 600,
+  tabletMax: 950,
+  laptopMax: 1300,
 };
 
 export const QUERIES = {
-  mobileAndUp: `(min-width: ${BREAKPOINTS.mobileMin / 16}rem)`,
-  tabletAndUp: `(min-width: ${BREAKPOINTS.tabletMin / 16}rem)`,
-  laptopAndUp: `(min-width: ${BREAKPOINTS.laptopMin / 16}rem)`,
-  desktopAndUp: `(min-width: ${BREAKPOINTS.desktopMin / 16}rem)`,
-  tabletOnly: `
-    (min-width: ${BREAKPOINTS.tabletMin / 16}rem) and
-    (max-width: ${(BREAKPOINTS.laptopMin - 1) / 16}rem)`,
+  phoneAndDown: `(max-width: ${BREAKPOINTS.phoneMax / 16}rem)`,
+  tabletAndDown: `(max-width: ${BREAKPOINTS.tabletMax / 16}rem)`,
+  laptopAndDown: `(max-width: ${BREAKPOINTS.laptopMax / 16}rem)`,
 };

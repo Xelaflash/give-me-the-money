@@ -1,6 +1,7 @@
-// styles imports
 import Image from 'next/image';
+// styles imports
 import styled from 'styled-components';
+// responsive queries
 import { QUERIES } from '../styles/constants';
 // Data
 import SPONSORS_DATA from '../data/sponsors.js';
@@ -20,7 +21,7 @@ export default function SponsorsSection() {
       </TitleWrapper>
       <LogoGridWrapper>
         {sponsors.map((sponsor) => (
-          <SponsorLogoWrapper>
+          <SponsorLogoWrapper key={sponsor.id}>
             <Image src={sponsor.img} alt={sponsor.altText} layout='fill' objectFit='contain' />
           </SponsorLogoWrapper>
         ))}
@@ -34,18 +35,18 @@ const SponsorsSectionWrapper = styled.section`
 `;
 
 const TitleWrapper = styled.div`
-  margin-top: -100px;
+  margin-top: -85px;
   text-align: center;
 `;
 
 const LogoGridWrapper = styled.div`
-  margin-top: 72px;
+  margin-top: 92px;
   display: flex;
   gap: 32px;
   justify-content: space-around;
   flex-wrap: wrap;
 
-  @media ${QUERIES.tabletAndUp} {
+  @media ${QUERIES.tabletAndDown} {
     gap: 16px;
   }
 `;

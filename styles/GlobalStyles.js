@@ -67,6 +67,7 @@ const GlobalStyles = createGlobalStyle`
     isolation: isolate;
     --color-primary: ${COLORS.primary};
     --color-vividGreen: ${COLORS.vividGreen};
+    --color-gray-100: ${COLORS.gray[100]};
     --color-gray-300: ${COLORS.gray[300]};
     --color-gray-500: ${COLORS.gray[500]};
     --color-gray-700: ${COLORS.gray[700]};

@@ -80,8 +80,7 @@ const TopCurveWrapper = styled.div`
 `;
 
 const BottomCurveWrapper = styled.div`
-  height: 200px;
-  margin-bottom: -40px;
+  height: 180px;
   background: rgba(5, 12, 31, 0)
     linear-gradient(
       to top,
@@ -100,7 +99,7 @@ const BottomCurveWrapper = styled.div`
       rgba(255, 255, 255, 0.133) 77.5%,
       rgba(255, 255, 255, 0.14) 84.5%,
       rgba(255, 255, 255, 0.15) 91.9%,
-      rgba(255, 255, 255, 0.15) 100%
+      rgba(255, 255, 255, 0.1) 100%
     )
     repeat scroll 0% 0%;
   transform: translateY(-1px);
