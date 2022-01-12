@@ -65,8 +65,11 @@ const GlobalStyles = createGlobalStyle`
       float above the app.
     */
     isolation: isolate;
-    --color-primary: hsl(162, 52%, 31%);
-    --color-gray-700: hsl(223, 5%, 60%);
+    --color-primary: ${COLORS.primary};
+    --color-vividGreen: ${COLORS.vividGreen};
+    --color-gray-300: ${COLORS.gray[300]};
+    --color-gray-500: ${COLORS.gray[500]};
+    --color-gray-700: ${COLORS.gray[700]};
     --color-secondary: hsl(223, 74%, 7%);
     scrollbar-color: var(--color-gray-700) var(--color-secondary);
     scrollbar-width: thin;
@@ -81,6 +84,17 @@ const GlobalStyles = createGlobalStyle`
     background: ${COLORS.secondary};
     font-weight: ${WEIGHTS.normal};
   }
+
+    *::-moz-selection { /* Code for Firefox */
+      background-color: var(--color-vividGreen);
+      color: var(--color-gray-700,white);
+      -webkit-text-fill-color: var(--color-gray-700) !important;
+    }
+    *::selection {
+      background-color: var(--color-vividGreen);
+      color: var(--color-gray-700,white);
+      -webkit-text-fill-color: var(--color-gray-700) !important;
+    }
 
   .header {
     font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
