@@ -93,7 +93,7 @@ const TestimonialStyles = styled.figure`
     margin-top: 32px;
     font-size: 1.1rem;
     text-align: center;
-    color: var(--color-gray-700);
+    color: var(--color-gray-500);
   }
 
   @media (max-width: 650px) {
