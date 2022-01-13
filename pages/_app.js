@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
       currency='USD'
       billingAddressCollection
     >
-      {/* <Head>
+      <Head>
         <meta charset='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <meta name='theme-color' content='#050c1f' />
@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }) {
         />
         <meta property='twitter:image' content='/images/meta-img.png' />
         <link rel='icon' href='/favicon.ico' />
-      </Head> */}
+      </Head>
       <CartStateProvider>
         <GlobalStyles />
         <Component {...pageProps} />
