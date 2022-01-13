@@ -15,7 +15,4 @@ export default function Products() {
   );
 }
 
-const ProductsWrapper = styled.div`
-  padding: 16px;
-  margin-top: 32px;
-`;
+const ProductsWrapper = styled.div``;

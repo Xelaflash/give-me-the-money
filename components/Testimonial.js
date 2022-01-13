@@ -18,7 +18,7 @@ export default function Testimonial() {
     arrows: false,
     infinite: true,
     autoplay: true,
-    autoplaySpeed: 7000,
+    autoplaySpeed: 5000,
     slidesToShow: 1,
   };
 

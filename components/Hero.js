@@ -40,6 +40,7 @@ const HeroWrapper = styled.section`
   margin: auto;
   text-align: center;
   padding: 25px;
+  padding-top: 0;
   border-radius: 20px;
   .header-span {
     cursor: help;
