@@ -1,11 +1,11 @@
-<h1 align="center">Welcome to Give The Money 👋</h1>
+<h1 align="center">👋 Welcome to Give The Money 💰💵</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
     <img alt="License: UNLICENSED" src="https://img.shields.io/badge/License-UNLICENSED-yellow.svg" />
   </a>
-  <a href="https://twitter.com/https:\/\/twitter.com\/GhostXela" target="_blank">
-    <img alt="Twitter: https:\/\/twitter.com\/GhostXela" src="https://img.shields.io/twitter/follow/https:\/\/twitter.com\/GhostXela.svg?style=social" />
+  <a href="https://twitter.com/GhostXela" target="_blank">
+    <img alt="Twitter: https://twitter.com/GhostXela" src="https://img.shields.io/twitter/follow/https://twitter.com/GhostXela.svg?style=social" />
   </a>
 </p>
 
@@ -13,17 +13,12 @@
 
 ### 🏠 [Homepage](https://www.givemethe.money)
 
-## Install
+## Stack
 
-```sh
-npm install
-```
+- NextJs 12
+- Styled Components
+- Stripe  
 
-## Usage
-
-```sh
-npm run start
-```
 
 ## Author
 
@@ -36,7 +31,4 @@ npm run start
 
 ## Show your support
 
-Give a ⭐️ if this project helped you!
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
+Give a ⭐️ if you like this project! Or.... You can GIVE THE MONEY too 😛 $$$
