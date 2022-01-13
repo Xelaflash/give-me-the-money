@@ -25,9 +25,9 @@
 👤 **AlexGWebDev**
 
 * Website: www.alexgwebdev.com
-* Twitter: [@https://twitter.com/GhostXela](https://twitter.com/GhostXela)
+* Twitter: [@GhostXela](https://twitter.com/GhostXela)
 * Github: [@Xelaflash](https://github.com/Xelaflash)
-* LinkedIn: [https://linkedin.com/in/alexgwebdev/](https://linkedin.com/in/alexgwebdev)
+* LinkedIn: [@alexgwebdev](https://linkedin.com/in/alexgwebdev)
 
 ## Show your support
 
