@@ -1,10 +1,13 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+// styles
+import GlobalStyles from '../styles/GlobalStyles';
 import { QUERIES, WEIGHTS } from '../styles/constants';
 
 export default function Custom404() {
   return (
     <FourOFourWrapper>
+      <GlobalStyles />
       <svg id='svgWrap_2' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 700 250'>
         <g>
           <path
