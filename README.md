@@ -4,9 +4,6 @@
   <a href="#" target="_blank">
     <img alt="License: UNLICENSED" src="https://img.shields.io/badge/License-UNLICENSED-yellow.svg" />
   </a>
-  <a href="https://twitter.com/GhostXela" target="_blank">
-    <img alt="Twitter: https://twitter.com/GhostXela" src="https://img.shields.io/twitter/follow/https://twitter.com/GhostXela.svg?style=social" />
-  </a>
 </p>
 
 > A silly Website to play around with NextJs 12. It's a single page website with Stripe payment integration. If you like it, don't hesitate to GIVE THE MONEY... $$$  
