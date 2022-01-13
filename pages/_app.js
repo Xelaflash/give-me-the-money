@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import PropTypes from 'prop-types';
 // libs
 import { CartProvider } from 'use-shopping-cart';
@@ -17,6 +18,9 @@ function MyApp({ Component, pageProps }) {
       currency='USD'
       billingAddressCollection
     >
+      <Head>
+        <meta name='viewport' content='width=device-width, initial-scale=1' />
+      </Head>
       <CartStateProvider>
         <GlobalStyles />
         <Component {...pageProps} />
