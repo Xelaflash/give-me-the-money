@@ -25,7 +25,7 @@ export default function Hero() {
         </span>
       </h1>
       <h2 className='subheader'>
-        You want to donate? I <span>collect?</span>
+        You want to donate? I <span>collect</span>
       </h2>
       {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
       <audio id='cashier-sound'>
