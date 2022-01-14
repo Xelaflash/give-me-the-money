@@ -14,7 +14,8 @@
 
 - NextJs 12
 - Styled Components
-- Stripe  
+- Stripe
+- Deployed on Netlify
 
 
 ## Author
