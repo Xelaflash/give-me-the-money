@@ -3,17 +3,16 @@
     "id": "prod_KUd6AhZmT9CKgQ",
     "name": "Light",
     "description": "Light Price for people to give the Money",
-    "image": "https://jovial-kirch-c55574.netlify.app/images/1$.jpeg",
+    "image": "https://www.givemethe.money/images/1$.jpeg",
     "price": 100,
     "quantity": 1,
     "currency": "USD"
-
   },
   {
     "id": "prod_KUdDV9FzlWGNxo",
     "name": "Professional",
     "description": "Only for Professional Give the Money people",
-    "image": "https://jovial-kirch-c55574.netlify.app/images/10$.jpeg",
+    "image": "https://www.givemethe.money/images/10$.jpeg",
     "price": 1000,
     "quantity": 1,
     "currency": "USD"
@@ -22,7 +21,7 @@
     "id": "prod_KUdEMM6Lc5NfQT",
     "name": "Premium VIP",
     "description": "Giving the Money VIP people",
-    "image": "https://jovial-kirch-c55574.netlify.app/images/100$.jpg",
+    "image": "https://www.givemethe.money/images/100$.jpg",
     "price": 10000,
     "quantity": 1,
     "currency": "USD"
