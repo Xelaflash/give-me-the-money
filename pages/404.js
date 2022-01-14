@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import { COLORS, QUERIES, WEIGHTS } from '../styles/constants';
 // styles
 import GlobalStyles from '../styles/GlobalStyles';
-import { QUERIES, WEIGHTS } from '../styles/constants';
 
 export default function Custom404() {
   return (
     <>
-      <GlobalStyles />
       <FourOFourWrapper>
         <svg id='svgWrap_2' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 700 250'>
           <g>
@@ -59,11 +58,15 @@ export default function Custom404() {
           </Link>
         </LinkWrapper>
       </FourOFourWrapper>
+      <GlobalStyles />
     </>
   );
 }
 
 const FourOFourWrapper = styled.section`
+  --color-primary: ${COLORS.primary};
+  --color-secondary: hsl(223, 74%, 7%);
+  --color-gray-100: ${COLORS.gray[100]};
   @import url('https://fonts.googleapis.com/css?family=Audiowide&display=swap');
   position: relative;
   height: 100vh;
