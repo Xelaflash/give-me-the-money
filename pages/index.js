@@ -83,7 +83,6 @@ export default function Home() {
           <TimelineSection />
           <TestimonialSection />
           <SponsorsSection />
-          {/* <Spacer size={72} /> */}
           <Footer />
         </MainStyles>
       </div>

@@ -33,15 +33,7 @@ export default function Footer() {
       <FlexWrapperRight>
         <BuyCoffeeBtnWrapper>
           <a href='https://www.buymeacoffee.com/givemethe.money' target='_blank' rel='noreferrer'>
-            <Image
-              src='/images/bmc-button.png'
-              alt='Buy me a coffee button'
-              quality={75}
-              width={200}
-              height={56}
-              placeholder='blur'
-              blurDataURL
-            />
+            <Image src='/images/bmc-button.png' alt='Buy me a coffee button' quality={75} width={200} height={56} />
           </a>
         </BuyCoffeeBtnWrapper>
         <SocialWrapper>
