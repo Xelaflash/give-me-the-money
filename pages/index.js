@@ -3,6 +3,8 @@ import Head from 'next/head';
 // lib
 import styled from 'styled-components';
 import { useShoppingCart } from 'use-shopping-cart';
+// styles
+import GlobalStyles from '../styles/GlobalStyles';
 // components
 import Layout from '../components/Layout';
 import Nav from '../components/Nav';
@@ -68,8 +70,9 @@ export default function Home() {
   // };
 
   return (
-    <Layout>
-      <div>
+    <>
+      <GlobalStyles />
+      <Layout>
         <Head>
           <title>Give me the Money</title>
         </Head>
@@ -85,8 +88,8 @@ export default function Home() {
           <SponsorsSection />
           <Footer />
         </MainStyles>
-      </div>
-    </Layout>
+      </Layout>
+    </>
   );
 }
 
