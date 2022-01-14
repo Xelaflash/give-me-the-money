@@ -3,8 +3,6 @@ import Head from 'next/head';
 // lib
 import styled from 'styled-components';
 import { useShoppingCart } from 'use-shopping-cart';
-// styles
-import GlobalStyles from '../styles/GlobalStyles';
 // components
 import Layout from '../components/Layout';
 import Nav from '../components/Nav';
@@ -70,26 +68,23 @@ export default function Home() {
   // };
 
   return (
-    <>
-      <GlobalStyles />
-      <Layout>
-        <Head>
-          <title>Give me the Money</title>
-        </Head>
-        <Nav count={cartCount} />
-        <MainStyles>
-          <Cart />
-          <LandingWrapper>
-            <Hero />
-            <Products />
-          </LandingWrapper>
-          <TimelineSection />
-          <TestimonialSection />
-          <SponsorsSection />
-          <Footer />
-        </MainStyles>
-      </Layout>
-    </>
+    <Layout>
+      <Head>
+        <title>Give me the Money</title>
+      </Head>
+      <Nav count={cartCount} />
+      <MainStyles>
+        <Cart />
+        <LandingWrapper>
+          <Hero />
+          <Products />
+        </LandingWrapper>
+        <TimelineSection />
+        <TestimonialSection />
+        <SponsorsSection />
+        <Footer />
+      </MainStyles>
+    </Layout>
   );
 }
 

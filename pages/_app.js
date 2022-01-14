@@ -5,6 +5,8 @@ import { CartProvider } from 'use-shopping-cart';
 
 // utils
 import { CartStateProvider } from '../utils/cartState';
+// styles
+import GlobalStyles from '../styles/GlobalStyles';
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -20,6 +22,7 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
+      <GlobalStyles />
       <CartStateProvider>
         <Component {...pageProps} />
       </CartStateProvider>
