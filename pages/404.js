@@ -7,7 +7,7 @@ import { QUERIES, WEIGHTS } from '../styles/constants';
 export default function Custom404() {
   return (
     <>
-      <GlobalStyles />
+      {/* <GlobalStyles /> */}
       <FourOFourWrapper>
         <svg id='svgWrap_2' xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 700 250'>
           <g>
@@ -54,7 +54,9 @@ export default function Custom404() {
         </svg>
         <h2>Page Not Found</h2>
         <LinkWrapper>
-          <Link href='/'> Go back home</Link>
+          <Link href='/'>
+            <a>Go back home</a>
+          </Link>
         </LinkWrapper>
       </FourOFourWrapper>
     </>

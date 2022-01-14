@@ -2,6 +2,8 @@ import Head from 'next/head';
 import PropTypes from 'prop-types';
 // libs
 import { CartProvider } from 'use-shopping-cart';
+// styles
+import GlobalStyles from '../styles/GlobalStyles';
 
 // utils
 import { CartStateProvider } from '../utils/cartState';
@@ -17,6 +19,7 @@ function MyApp({ Component, pageProps }) {
       currency='USD'
       billingAddressCollection
     >
+      <GlobalStyles />
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
