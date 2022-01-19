@@ -31,7 +31,7 @@ export default function Testimonial() {
             <AvatarWrapper>
               {/* //!!I do not use Next image because of styling issues */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={testimonialItem.img} alt='Fake profiles pics - Testimonial section' />
+              <img src={testimonialItem.img} alt='Fake profiles pics - Testimonial section' loading='lazy' />
             </AvatarWrapper>
             {/* eslint-disable-next-line react/no-danger */}
             <blockquote dangerouslySetInnerHTML={{ __html: testimonialItem.text }} />
